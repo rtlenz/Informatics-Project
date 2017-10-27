@@ -11,7 +11,7 @@
          $scope.login = function(credentialDetails) {
             var credentials = angular.copy(credentialDetails);
             
-            $http.post("login.php", credentials)
+            $http.post("log-in.php", credentials)
                 .then(function (response) {
                 if (response.status == 200) {
                     if (response.data.status == 'error') {
@@ -29,7 +29,7 @@
         
         //log out
          $scope.logout = function() {
-            $http.post("logout.php")
+            $http.post("log-out.php")
                 .then(function (response) {
                 if (response.status == 200) {
                     if (response.data.status == 'error') {
@@ -48,7 +48,7 @@
     
          // ! logged in
         $scope.isloggedin = function() {
-           $http.post("isloggedin.php")
+           $http.post("is-log-in.php")
                 .then(function (response) {
                 if (response.status == 200) {
                     if (response.data.status == 'error') {
