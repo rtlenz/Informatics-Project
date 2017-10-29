@@ -1,7 +1,7 @@
 (function () {
 	'use strict';
 	var myApp = angular.module("list"); //Music corresponds to the module//
-	myApp.controller("dataControl", function($scope, $http,$window) { //Scope defines variables that can be accessed through HTML//
+	myApp.controller("dataControl", function() { //Scope defines variables that can be accessed through HTML//
 		
 		
 			
