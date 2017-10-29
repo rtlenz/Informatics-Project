@@ -1,9 +1,12 @@
 (function () {
 	'use strict';
-	var myApp = angular.module("list"); //Music corresponds to the module//
-	myApp.controller("dataControl", function() { //Scope defines variables that can be accessed through HTML//
+	var myApp = angular.module("music"); //Music corresponds to the module//
+	myApp.controller("dataControl", function($scope, $http,$window) { //Scope defines variables that can be accessed through HTML//
 		
-		
+		//data on songs
+		$http.get("getmusic.php")
+		.then(function(response){
+			$scope.songs = response.data;
 			
 		});
 		
@@ -32,7 +35,7 @@
         $scope.login = function(credentialDetails) {
             var credentials = angular.copy(credentialDetails);
             
-            $http.post("log-in.php", credentials)
+            $http.post("login.php", credentials)
                 .then(function (response) {
                 if (response.status == 200) {
                     if (response.data.status == 'error') {
@@ -50,7 +53,7 @@
 
         // logs out
         $scope.logout = function() {
-            $http.post("log-out.php")
+            $http.post("logout.php")
                 .then(function (response) {
                 if (response.status == 200) {
                     if (response.data.status == 'error') {
@@ -67,7 +70,7 @@
         
         // is logged in
         $scope.isloggedin = function() {
-           $http.post("is-log-in.php")
+           $http.post("isloggedin.php")
                 .then(function (response) {
                 if (response.status == 200) {
                     if (response.data.status == 'error') {
@@ -117,6 +120,7 @@
                 }
             });            
         };
+		
 		
 		
 		
