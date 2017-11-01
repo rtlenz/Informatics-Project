@@ -4,7 +4,7 @@
 	myApp.controller("dataControl", function($scope, $http,$window) { //Scope defines variables that can be accessed through HTML//
 		
 		//data on songs
-		$http.get("getmusic.php")
+		$http.get("getlists.php")
 		.then(function(response){
 			$scope.songs = response.data;
 			
