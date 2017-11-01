@@ -27,7 +27,7 @@
 </head>
 
 <body>
-<div class="container" ng-controller="dataControl">
+
 <div ng-include ng-init = "menuHighlight = 0;" src="'listHeader.html'"></div>
 <div class="container" ng-controller="dataControl"><
     
@@ -41,27 +41,25 @@
     </div>
     
     
-    <!-- Lists -->
-        <div ng-repeat="list in data">
-            <h2>{{list.name}}</h2>
+<div ng-repeat="list in data">
+    <h2>{{list.name}}</h2>
+<div class="panel panel-default" ng-repeat="item in list.items | filter:query">
+    <div class="panel-heading">
+            <h4>{{item.name}}</h4>
         </div>
-        <div class="panel panel-default" ng-repeat="item in list.items | filter:query">
-            <div class="panel-heading">
-                    <h4>{{item.name}}</h4>
-            </div>
-            <div ng-repeat="attribute in item.attributes">
-                <div ng-if="attribute.type=='text'">
-                    <strong>{{attribute.label}}</strong>: {{attribute.value}}
-                </div>
-                <div ng-if="attribute.type=='video'">
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <span ng-bind-html="attribute.value | trustHtml"></span>
-                    </div>
-                </div>
+    <div ng-repeat="attribute in item.attributes">
+        <div ng-if="attribute.type=='text'">
+            <strong>{{attribute.label}}</strong>: {{attribute.value}}
+        </div>
+        <div ng-if="attribute.type=='video'">
+            <div class="embed-responsive embed-responsive-16by9">
+                <span ng-bind-html="attribute.value | trustHtml"></span>
             </div>
         </div>
+    </div>
 </div>
-        
-    
+</div> 
+</div>
+
 </body>
 </html>
