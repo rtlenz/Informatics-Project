@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS list;
 CREATE TABLE list (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(120) NOT NULL,
+	account_username VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
 );
 
