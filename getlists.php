@@ -8,7 +8,7 @@
 	$accountusername = $list['account_username']; 
     
     // set up a query to get the list of lists
-    $query = "SELECT * FROM list WHERE account_username='$accountusername'"; 
+    $query = "SELECT * FROM list WHERE account_username ='$accountusername'"; 
     
     // run the query
     $result = queryDB($query, $db);
@@ -29,6 +29,7 @@
 			$lists[$i] = $list;
 			
 			$listid = $list['id'];
+			
 			
 			// now get the items under the current list
 			$query = "SELECT * FROM item WHERE list_id = $listid ORDER BY ordernumber";
