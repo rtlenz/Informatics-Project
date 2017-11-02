@@ -5,10 +5,10 @@
     // connect to the database
     $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
 	
-	$accountusername = $list['account_username']; 
+	//$accountusername = $list['account_username']; 
     
     // set up a query to get the list of lists
-    $query = "SELECT * FROM list WHERE account_username ='$accountusername'"; 
+    $query = "SELECT * FROM list"; 
     
     // run the query
     $result = queryDB($query, $db);
