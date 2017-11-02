@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS list;
 CREATE TABLE list (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(120) NOT NULL,
-	account_username VARCHAR(255) NOT NULL,
+	account_username VARCHAR(255) NOT NULL, 
     PRIMARY KEY (id)
 );
 
@@ -30,11 +30,20 @@ CREATE TABLE attribute (
 );
 
 -- insert some records
-INSERT INTO list (name) VALUES ('Soccer players');
+INSERT INTO list (name) WHERE account_username ='rtlenz' VALUES ('Soccer players');
 INSERT INTO item (list_id, name, ordernumber) VALUES (1, 'Lionel Messi', 0);
-INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (1, 0, 'club', 'text', 'FC Barcelona');
-INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (1, 1, 'national team', 'text', 'Argentina');
+INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (1, 0, 'Club', 'text', 'FC Barcelona');
+INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (1, 1, 'National team', 'text', 'Argentina');
 INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (1, 2, 'video', 'video', "<iframe src='https://www.youtube.com/embed/0NQL3qZKrTE' frameborder='0' allowfullscreen></iframe>");
 INSERT INTO item (list_id, name, ordernumber) VALUES (1, 'Neymar Jr.', 1);
-INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (2, 0, 'club', 'text', 'PSG');
-INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (2, 1, 'national team', 'text', 'Brazil');
+INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (2, 0, 'Club', 'text', 'PSG');
+INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (2, 1, 'National team', 'text', 'Brazil');
+
+INSERT INTO list (name) WHERE account_username ='larrison' VALUES ('Soccer players');
+INSERT INTO item (list_id, name, ordernumber) VALUES (1, 'Messi', 0);
+INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (1, 0, 'Club', 'text', 'FC Barcelona');
+INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (1, 1, 'National team', 'text', 'Argentina');
+INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (1, 2, 'video', 'video', "<iframe src='https://www.youtube.com/embed/0NQL3qZKrTE' frameborder='0' allowfullscreen></iframe>");
+INSERT INTO item (list_id, name, ordernumber) VALUES (1, 'Neymar', 1);
+INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (2, 0, 'Club', 'text', 'PSG');
+INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (2, 1, 'National team', 'text', 'Brazil');
