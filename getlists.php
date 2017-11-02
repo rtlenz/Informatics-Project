@@ -26,7 +26,7 @@
     
 		while ($list =nextTuple($result)){
 			$lists[$i] = $list;
-			$accountusername = $list['account_username'];
+			$accountusername = $account['account'];
 			$query = "SELECT * FROM account WHERE username ='$accountusername'";
 			
 			// run the query
