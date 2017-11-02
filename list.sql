@@ -39,11 +39,4 @@ INSERT INTO item (list_id, name, ordernumber) VALUES (1, 'Neymar Jr.', 1);
 INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (2, 0, 'Club', 'text', 'PSG');
 INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (2, 1, 'National team', 'text', 'Brazil');
 
-INSERT INTO list (name,account_username)  VALUES ('Soccer players','noah');
-INSERT INTO item (list_id, name, ordernumber) VALUES (1, 'Messi', 0);
-INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (1, 0, 'Club', 'text', 'FC Barcelona');
-INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (1, 1, 'National team', 'text', 'Argentina');
-INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (1, 2, 'video', 'video', "<iframe src='https://www.youtube.com/embed/0NQL3qZKrTE' frameborder='0' allowfullscreen></iframe>");
-INSERT INTO item (list_id, name, ordernumber) VALUES (1, 'Neymar', 1);
-INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (2, 0, 'Club', 'text', 'PSG');
-INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (2, 1, 'National team', 'text', 'Brazil');
+
