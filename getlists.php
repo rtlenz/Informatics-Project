@@ -63,7 +63,7 @@
 			
 			$i++;
 		}
-	}else{
+	
     // put together JSON object to send back
     // send response back
     $response = array();
