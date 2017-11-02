@@ -49,7 +49,7 @@
         </div>
     <div ng-repeat="attribute in item.attributes">
         <div ng-if="attribute.type=='text'">
-            <strong>{{attribute.label}}</strong>: {{attribute.value}}
+            <p><strong>{{attribute.label}}</strong>: {{attribute.value}}</p> <!--- I messed with this. No p's before -->
         </div>
         <div ng-if="attribute.type=='video'">
             <div class="embed-responsive embed-responsive-16by9">
