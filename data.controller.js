@@ -6,7 +6,7 @@
 		//data on songs
 		$http.get("getlists.php")
 		.then(function(response){
-			$scope.data = response.data;
+			$scope.data = response.data.value;
 			
 		});
 		
