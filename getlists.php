@@ -16,7 +16,15 @@
     // assign results to array
     $lists = array();
     $i = 0;
-	if($isComplete){
+	$isloggedin = false;
+    $username = "not logged in";
+    
+    session_start();
+    if (isset($_SESSION['username'])) {
+        $isloggedin = true;
+        $username = isset($_SESSION['username']);
+    
+	
 		while ($list = nextTuple($result)) {
 			$lists[$i] = $list;
 			
@@ -54,7 +62,8 @@
 			
 			$i++;
 		}
-	}else{
+	
+
     
     // put together JSON object to send back
     // send response back
