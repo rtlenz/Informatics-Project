@@ -5,10 +5,10 @@
     // connect to the database
     $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
 	
-	//$accountusername = $account['username']; 
+	$accountusername = $account['username']; 
     
     // set up a query to get the list of lists
-    //$query = "SELECT * FROM list WHERE account_username ='$accountusername'"; 
+    $query = "SELECT * FROM list WHERE account_username='$accountusername'"; 
     
     // run the query
     $result = queryDB($query, $db);
@@ -62,9 +62,7 @@
 			
 			$i++;
 		}
-	
-
-    
+	}else{
     // put together JSON object to send back
     // send response back
     $response = array();
