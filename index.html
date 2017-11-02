@@ -28,19 +28,23 @@
 
 <body>
 
-<div ng-include ng-init = "menuHighlight = 0;" src="'listHeader.html'"></div>
+<!-- container for my content -->
 <div class="container" ng-controller="dataControl">
     
+<!-- Title -->
+<div ng-include src="'listHeader.html'"></div>
+
 <!-- Content -->
 
 <!-- Search bar -->
-    <div class="row">
-        <div class="col-xs-12">
-            <p>Search: <input ng-model="query[queryBy]" /></p>
-        </div>
+<div class="row">
+    <div class="col-xs-12">
+        <p>Search: <input ng-model="query[queryBy]" /></p>
     </div>
-    
-    
+</div>
+
+
+<!-- Lists -->
 <div ng-repeat="list in data">
     <h2>{{list.name}}</h2>
 <div class="panel panel-default" ng-repeat="item in list.items | filter:query">
@@ -49,7 +53,7 @@
         </div>
     <div ng-repeat="attribute in item.attributes">
         <div ng-if="attribute.type=='text'">
-            <p><strong>{{attribute.label}}</strong>: {{attribute.value}}</p> <!--- I messed with this. No p's before -->
+            <strong>{{attribute.label}}</strong>: {{attribute.value}}
         </div>
         <div ng-if="attribute.type=='video'">
             <div class="embed-responsive embed-responsive-16by9">
@@ -58,7 +62,10 @@
         </div>
     </div>
 </div>
-</div> 
+</div>
+
+
+    
 </div>
 
 </body>
