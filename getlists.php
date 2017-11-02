@@ -8,7 +8,7 @@
 	
     
     // set up a query to get the list of lists
-    $query = "SELECT * FROM list AND account"; 
+    $query = "SELECT * FROM list"; 
     
     // run the query
     $result = queryDB($query, $db);
@@ -25,14 +25,14 @@
         $username = isset($_SESSION['username']);
     
 		while ($list =nextTuple($result)){
-			$lists[$i] = $list;
-			$accountusername = $account['account'];
-			$query = "SELECT * FROM account WHERE username ='$accountusername'";
-			
-			// run the query
-			$result_item = queryDB($query, $db);
-			$items = array();
-			$j = 0;
+			//$lists[$i] = $list;
+			//$accountusername = $account['account'];
+			//$query = "SELECT * FROM account WHERE username ='$accountusername'";
+			//
+			//// run the query
+			//$result_item = queryDB($query, $db);
+			//$items = array();
+			//$j = 0;
 			
 			
 			while ($list = nextTuple($result)) {
@@ -74,13 +74,14 @@
 				$i++;
 			}
 		}
+		
 	
-    // put together JSON object to send back
-    // send response back
-    $response = array();
-    $response['status'] = 'success';
-    $response['value'] = $lists;
-    header('Content-Type: application/json');
-    echo(json_encode($response));
+		// put together JSON object to send back
+		// send response back
+		$response = array();
+		$response['status'] = 'success';
+		$response['value'] = $lists;
+		header('Content-Type: application/json');
+		echo(json_encode($response));
 	}
 ?>
