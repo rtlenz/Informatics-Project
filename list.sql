@@ -30,7 +30,7 @@ CREATE TABLE attribute (
 );
 
 -- insert some records
-INSERT INTO list (name)  VALUES ('Soccer players','rtlenz');
+INSERT INTO list (name)  VALUES ('Soccer players');
 INSERT INTO item (list_id, name, ordernumber) VALUES (1, 'Lionel Messi', 0);
 INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (1, 0, 'Club', 'text', 'FC Barcelona');
 INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (1, 1, 'National team', 'text', 'Argentina');
@@ -39,7 +39,7 @@ INSERT INTO item (list_id, name, ordernumber) VALUES (1, 'Neymar Jr.', 1);
 INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (2, 0, 'Club', 'text', 'PSG');
 INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (2, 1, 'National team', 'text', 'Brazil');
 
-INSERT INTO list (name)  VALUES ('Soccer players','noah');
+INSERT INTO list (name)  VALUES ('Soccer players');
 INSERT INTO item (list_id, name, ordernumber) VALUES (1, 'Messi', 0);
 INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (1, 0, 'Club', 'text', 'FC Barcelona');
 INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (1, 1, 'National team', 'text', 'Argentina');
