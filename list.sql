@@ -47,16 +47,16 @@ INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (3, 2, '
 
 INSERT INTO list (name,account_username)  VALUES ('Football Players','rtlenz');
 INSERT INTO item (list_id, name, ordernumber) VALUES (2, 'Odell Beckham Jr.', 0);
-INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (1, 0, 'Team', 'text', 'New York Giants');
-INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (1, 1, 'Postiton', 'text', 'WR');
-INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (1, 2, 'video', 'video', "<iframe  src='https://www.youtube.com/embed/zxbz3DDQzHU' frameborder='0' allowfullscreen></iframe>");
+INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (4, 0, 'Team', 'text', 'New York Giants');
+INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (4, 1, 'Postiton', 'text', 'WR');
+INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (4, 2, 'video', 'video', "<iframe  src='https://www.youtube.com/embed/zxbz3DDQzHU' frameborder='0' allowfullscreen></iframe>");
 INSERT INTO item (list_id, name, ordernumber) VALUES (2, 'Jordan Howard', 0);
-INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (2, 0, 'Team', 'text', 'Chicago Bears');
-INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (2, 1, 'Postiton', 'text', 'RB');
-INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (2, 2, 'video', 'video', "<iframe  src='https://www.youtube.com/embed/iejVxd0i6hg' frameborder='0' allowfullscreen></iframe>");
+INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (5, 0, 'Team', 'text', 'Chicago Bears');
+INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (5, 1, 'Postiton', 'text', 'RB');
+INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (5, 2, 'video', 'video', "<iframe  src='https://www.youtube.com/embed/iejVxd0i6hg' frameborder='0' allowfullscreen></iframe>");
 INSERT INTO item (list_id, name, ordernumber) VALUES (2, 'Tom Brady', 0);
-INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (3, 0, 'Team', 'text', 'New England Patriots');
-INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (3, 1, 'Postiton', 'text', 'QB');
-INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (3, 2, 'video', 'video', "<iframe  src='https://www.youtube.com/embed/3-SAA3aK0eI' frameborder='0' allowfullscreen></iframe>");
+INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (6, 0, 'Team', 'text', 'New England Patriots');
+INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (6, 1, 'Postiton', 'text', 'QB');
+INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (6, 2, 'video', 'video', "<iframe  src='https://www.youtube.com/embed/3-SAA3aK0eI' frameborder='0' allowfullscreen></iframe>");
 
 
