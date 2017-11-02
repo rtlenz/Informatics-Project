@@ -24,7 +24,7 @@
         $isloggedin = true;
         $username = isset($_SESSION['username']);
     
-		while ($list =nextTuple($result)){
+		//while ($list =nextTuple($result)){
 			//$lists[$i] = $list;
 			//$accountusername = $account['account'];
 			//$query = "SELECT * FROM account WHERE username ='$accountusername'";
@@ -73,7 +73,7 @@
 				
 				$i++;
 			}
-		}
+		
 		
 	
 		// put together JSON object to send back
