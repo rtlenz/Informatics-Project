@@ -5,10 +5,10 @@
     // connect to the database
     $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
 	
-	//$accountusername = $list['account_username']; 
+	
     
     // set up a query to get the list of lists
-    $query = "SELECT * FROM list"; 
+    $query = "SELECT * FROM list AND account"; 
     
     // run the query
     $result = queryDB($query, $db);
@@ -24,44 +24,55 @@
         $isloggedin = true;
         $username = isset($_SESSION['username']);
     
-	
-		while ($list = nextTuple($result)) {
+		while ($list =nextTuple($result)){
 			$lists[$i] = $list;
-			
-			$listid = $list['id'];
-			
-			
-			// now get the items under the current list
-			$query = "SELECT * FROM item WHERE list_id = $listid ORDER BY ordernumber";
+			$accountusername = $list['account_username'];
+			$query = "SELECT * FROM account WHERE username ='$accountusername'";
 			
 			// run the query
 			$result_item = queryDB($query, $db);
 			$items = array();
 			$j = 0;
-			while ($item = nextTuple($result_item)) {
-				$items[$j] = $item;
+			
+			
+			while ($list = nextTuple($result)) {
+				$lists[$i] = $list;
 				
-				$itemid = $item['id'];
+				$listid = $list['id'];
 				
-				// now get the attributes for this item
-				$query = "SELECT * FROM attribute WHERE item_id = $itemid ORDER BY ordernumber";
 				
-				//run the query
-				$result_attribute = queryDB($query, $db);
-				$attributes = array();
-				$k = 0;
-				while ($attribute = nextTuple($result_attribute)) {
-					$attributes[$k] = $attribute;
-					$k++;
+				// now get the items under the current list
+				$query = "SELECT * FROM item WHERE list_id = $listid ORDER BY ordernumber";
+				
+				// run the query
+				$result_item = queryDB($query, $db);
+				$items = array();
+				$j = 0;
+				while ($item = nextTuple($result_item)) {
+					$items[$j] = $item;
+					
+					$itemid = $item['id'];
+					
+					// now get the attributes for this item
+					$query = "SELECT * FROM attribute WHERE item_id = $itemid ORDER BY ordernumber";
+					
+					//run the query
+					$result_attribute = queryDB($query, $db);
+					$attributes = array();
+					$k = 0;
+					while ($attribute = nextTuple($result_attribute)) {
+						$attributes[$k] = $attribute;
+						$k++;
+					}
+					
+					$items[$j]['attributes'] = $attributes;
+					$j++;
 				}
 				
-				$items[$j]['attributes'] = $attributes;
-				$j++;
+				$lists[$i]['items'] = $items;
+				
+				$i++;
 			}
-			
-			$lists[$i]['items'] = $items;
-			
-			$i++;
 		}
 	
     // put together JSON object to send back
