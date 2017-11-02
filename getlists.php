@@ -4,9 +4,11 @@
     
     // connect to the database
     $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
+	
+	//$accountusername = $account['username']; Is this right way to show specific lists for user?
     
     // set up a query to get the list of lists
-    $query = "SELECT * FROM list";
+    $query = "SELECT * FROM list"; //Is this right?
     
     // run the query
     $result = queryDB($query, $db);
