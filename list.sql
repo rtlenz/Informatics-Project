@@ -11,7 +11,7 @@ CREATE TABLE list (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(120) NOT NULL,
 	account_username VARCHAR(255) NOT NULL,
-	template_id NOT NULL,
+	template_id INT NOT NULL,
     PRIMARY KEY (id)
 );
 
