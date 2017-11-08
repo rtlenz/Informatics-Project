@@ -2,6 +2,9 @@
 DROP TABLE IF EXISTS attribute;
 DROP TABLE IF EXISTS item;
 DROP TABLE IF EXISTS list;
+DROP TABLE IF EXISTS template;
+DROP TABLE IF EXISTS follow;
+DROP TABLE IF EXISTS templateAttribute;
 
 -- this is the table for lists
 CREATE TABLE list (
