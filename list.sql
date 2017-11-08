@@ -49,7 +49,7 @@ CREATE TABLE templateAttribute(
 	image VARCHAR(255) NOT NULL,
 	video VARCHAR(255) NOT NULL,
 	PRIMARY KEY(id)
-)
+);
 
 -- insert some records
 INSERT INTO list (name,account_username)  VALUES ('Baseball Players','rtlenz');
