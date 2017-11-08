@@ -1,4 +1,4 @@
--- drop the table if it already exists
+
 DROP TABLE IF EXISTS attribute;
 DROP TABLE IF EXISTS item;
 DROP TABLE IF EXISTS list;
@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS template;
 DROP TABLE IF EXISTS follow;
 DROP TABLE IF EXISTS templateAttribute;
 
--- this is the table for lists
+
 CREATE TABLE list (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(120) NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE attribute (
     ordernumber INT NOT NULL,
     label VARCHAR(120) NOT NULL,
     type VARCHAR(120) NOT NULL,
-    valuee VARCHAR(255) NOT NULL,
+    value VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)    
 );
 CREATE TABLE follow(
