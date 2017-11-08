@@ -9,7 +9,7 @@ CREATE TABLE account(
 	email VARCHAR(255) NOT NULL,
 	birthday VARCHAR(255) NOT NULL,
 	friends VARCHAR(255) NOT NULL,
-	follow_followedid NOT NULL,
-	follow_followerid NOT NULL,
+	follow_followedid INT NOT NULL,
+	follow_followerid INT NOT NULL,
 	PRIMARY KEY (ID)
 );
