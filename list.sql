@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS item;
 DROP TABLE IF EXISTS list;
 DROP TABLE IF EXISTS template;
 DROP TABLE IF EXISTS follow;
-DROP TABLE IF EXISTS templateAttribute;
+DROP TABLE IF EXISTS templateattribute;
 
 -- this is the table for lists
 CREATE TABLE list (
@@ -42,7 +42,7 @@ CREATE TABLE template(
 	id INT NOT NULL AUTO_INCREMENT,
 	PRIMARY KEY(id)
 );
-CREATE TABLE templateAttribute(
+CREATE TABLE templateattribute(
 	id INT NOT NULL AUTO_INCREMENT,
 	template_id NOT NULL,
 	text VARCHAR(255) NOT NULL,
