@@ -7,7 +7,8 @@ DROP TABLE IF EXISTS list;
 CREATE TABLE list (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(120) NOT NULL,
-	account_username VARCHAR(255) NOT NULL, 
+	account_username VARCHAR(255) NOT NULL,
+	template_id NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -28,6 +29,24 @@ CREATE TABLE attribute (
     value VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)    
 );
+CREATE TABLE follow(
+	id INT NOT NULL AUTO_INCREMENT,
+	followerid INT NOT NULL,
+	followedid INT NOT NULL,
+	PRIMARY KEY (id)
+);
+CREATE TABLE template(
+	id INT NOT NULL AUTO_INCREMENT,
+	PRIMARY KEY(id)
+);
+CREATE TABLE templateAttribute(
+	id INT NOT NULL AUTO_INCREMENT,
+	template_id NOT NULL,
+	text VARCHAR(255) NOT NULL,
+	image VARCHAR(255) NOT NULL,
+	video VARCHAR(255) NOT NULL,
+	PRIMARY KEY(id)
+)
 
 -- insert some records
 INSERT INTO list (name,account_username)  VALUES ('Baseball Players','rtlenz');
