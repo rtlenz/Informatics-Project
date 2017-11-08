@@ -44,7 +44,7 @@ CREATE TABLE template(
 );
 CREATE TABLE templateAttribute(
 	id INT NOT NULL AUTO_INCREMENT,
-	template_id NOT NULL,
+	template_id INT NOT NULL,
 	text VARCHAR(255) NOT NULL,
 	image VARCHAR(255) NOT NULL,
 	video VARCHAR(255) NOT NULL,
