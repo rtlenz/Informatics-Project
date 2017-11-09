@@ -71,7 +71,7 @@
 		$video = makeStringSafe($db,$video);
 		
 		//make insert statement
-		$query = "INSERT INTO templateAttribute(listName, text, dates, video) VALUES ('$listName','$text',$dates,'$video');";
+		$query = "INSERT INTO templateAttribute(listName, text, dates, video) VALUES ('$listName','$text',$dates,'$video')";
 		
 		//run insert statement
 		$result = queryDB($query,$db);
