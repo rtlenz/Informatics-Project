@@ -30,6 +30,25 @@
                 }
             });
         };
+		
+		// save list
+		$scope.saveList = function(listDetails) {
+            var list = angular.copy(listDetails);
+            
+            $http.post("savelist.php", list)
+                .then(function (response) {
+                if (response.status == 200) {
+                    if (response.data.status == 'error') {
+                        alert ('error: ' + response.data.message);
+                    } else {
+                        //successful
+                        $window.location.href ="index.html";
+                    }
+                } else {
+                    alert('unexpected error');
+                }
+            });
+        };
         
         // logs in
         $scope.login = function(credentialDetails) {
