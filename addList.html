@@ -22,15 +22,16 @@
     <!-- JQuery -->
     <script type="text/javascript" src="jquery-3.2.1.min.js"></script>      
        
-<head>
-    <title>Create a list</title>
-</head>
-<body>
-    <div class="row">
-        <div class="col-xs-12">
-            <h1>Create a List</h1>
+<div class="container" ng-controller="dataControl">
+        <!--Content for songs-->
+        <div ng-include ng-init="menuHighlight = 1;" src="'listHeader.html'"></div>
+        
+        <!-- Conter -->
+        <div class="row">
+            <div class ="col-xs-12">
+                <h1>Add a New List</h1>
+            </div>
         </div>
-    </div>
     <form name="listForm" novalidate>
     <!-- list name -->
     <div class="form-group" ng-class="{ 'has-error' : listForm.listName.$invalid && listForm.listName.$touched, 'has-success' : !listForm.listName.$invalid && listForm.listName.$touched }">
@@ -42,5 +43,7 @@
     
     <button class="btn btn-default" ng-click="saveList(list)" ng-disabled="listForm.$invalid">Add List</button>
     </form>
+</div>
+
 </body>
 </html>
