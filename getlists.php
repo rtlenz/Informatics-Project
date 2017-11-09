@@ -6,10 +6,10 @@
     $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
 	
 	
-    
+    $_SESSION['account']=$accountid;
     // set up a query to get the list of lists
-    $query = "SELECT * FROM list"; 
-    
+    $query = "SELECT * FROM list WHERE list.accountid=$accountid"; 
+
     // run the query
     $result = queryDB($query, $db);
     
