@@ -71,7 +71,7 @@
 		$video = makeStringSafe($db,$video);
 		
 		//make insert statement
-		$query = "INSERT INTO templateAttribute(listName, text, dates, video) VALUES ('$listName','$text',$dates,'$video')";
+		$query = "INSERT INTO templateAttribute(listName) VALUES ('$listName')";
 		
 		//run insert statement
 		$result = queryDB($query,$db);
@@ -82,7 +82,7 @@
 		//send a response back to the called of this php file
 		$response =array();
 		$response['status'] = 'success';
-		$response['id'] = $template_idid;
+		$response['id'] = $id;
 		header('Content-Type: application/json');
 		echo(json_encode($response));
 		
