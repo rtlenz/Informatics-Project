@@ -53,7 +53,7 @@ CREATE TABLE templateAttribute(
 );
 
 -- insert some records
-INSERT INTO list (name,accountid)  VALUES ('Baseball Players','rtlenz');
+INSERT INTO list (name,accountid)  VALUES ('Baseball Players',1);
 INSERT INTO item (list_id, name, ordernumber) VALUES (1, 'Frank Thomas', 0);
 INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (1, 0, 'Team', 'text', 'Chicago White Sox');
 INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (1, 1, 'Postiton', 'text', '1B/DH');
@@ -68,7 +68,7 @@ INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (3, 1, '
 INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (3, 2, 'video', 'video', "<iframe src='https://www.youtube.com/embed/x2FfruQZfhg' frameborder='0' allowfullscreen></iframe>");
 
 
-INSERT INTO list (name,accountid)  VALUES ('Football Players','rtlenz');
+INSERT INTO list (name,accountid)  VALUES ('Football Players',2);
 INSERT INTO item (list_id, name, ordernumber) VALUES (2, 'Odell Beckham Jr.', 0);
 INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (4, 0, 'Team', 'text', 'New York Giants');
 INSERT INTO attribute (item_id, ordernumber, label, type, value) VALUES (4, 1, 'Postiton', 'text', 'WR');
