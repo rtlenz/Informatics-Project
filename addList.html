@@ -38,31 +38,14 @@
     <!-- list name -->
         <div class="form-group" ng-class="{ 'has-error' : listForm.listName.$invalid && listForm.listName.$touched, 'has-success' : !listForm.listName.$invalid && listForm.listName.$touched }">
             <label>List Name</label>
-            <input type="text" class="form-control" name="listname" ng-model="templateAttribute.listName" required/>
+            <input type="text" class="form-control" name="listname" ng-model="list.listName" required/>
             <p ng-show="listForm.listName.$invalid && listForm.listName.$touched" class="help-block">The list name is required</p>
         </div>
         
-        <!--<select ng-model="templateAttribute.type">
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-        </select>-->
-        
-
-    <!-- Single button -->
-       <!-- <div class="form-group" ng-class="{ 'has-error' : listForm.text.$invalid && listForm.text.$touched, 'has-success' : !listForm.text.$invalid && listForm.text.$touched }">
-                <label>Attribute 1 Type</label>
-                <input type="text" class="form-control" name="attributeType1" ng-model="templateAttribute.text" required/>
-                <p ng-show="listForm.text.$invalid && listForm.text.$touched" class="help-block">An attribute type is required</p>
-        </div>-->
-        
-        <div class="form-group" ng-class="{ 'has-error' : listForm.dates.$invalid && listForm.dates.$touched, 'has-success' : !listForm.dates.$invalid && listForm.dates.$touched }">
-                <label>Attribute 2 Type</label>
-                <input type="text" class="form-control" name="attributeType2" ng-model="templateAttribute.dates" required/>
-                <p ng-show="listForm.dates.$invalid && listForm.dates.$touched" class="help-block">An attribute type is required</p>
-        </div>
+     
     </form>
 
-        <button class="btn btn-default" ng-click="saveList(templateAttribute)" ng-disabled="listForm.$invalid">Add List</button>  
+        <button class="btn btn-default" ng-click="saveList(list)" ng-disabled="listForm.$invalid">Save List</button>  
         
     
 </div>
