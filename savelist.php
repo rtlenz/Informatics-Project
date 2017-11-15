@@ -6,10 +6,11 @@
 	//get data from form
 	
 	$data =json_decode(file_get_contents('php://input'), true);
+	$label = $data['label'];
+	$type = $data['type'];
+	$value = $data['value'];
 	$listName = $data['listName'];
-	$text = $data['text'];
-	$dates = $data['dates'];
-	$video = $data['video'];
+	
 	
 	//connect to database
 	$db = connectDB($DBHost, $DBUser,$DBPassword,$DBName);
@@ -46,7 +47,9 @@
 	//Check for duplicates in database
 	if($isComplete){
 		//This selects from table anything entered by user
-		$query ="SELECT * FROM templateAttribute WHERE listName='$listName'";
+		$query ="SELECT * FROM list WHERE listName='$listName'";
+		
+		$mysqli = new mysqli("accountid");
 		
 		//run the select statement
 		$result = queryDB($query, $db);	
@@ -71,13 +74,13 @@
 		$video = makeStringSafe($db,$video);
 		
 		//make insert statement
-		$query = "INSERT INTO templateAttribute(listName) VALUES ('$listName')";
+		$query = "INSERT INTO templateAttribute(listName,label,type,value) VALUES ('$listName','$label','$type','$value')";
 		
 		//run insert statement
 		$result = queryDB($query,$db);
 		
 		//get id for players just entered
-		$template_id = mysqli_insert_id($db);
+		$id = mysqli_insert_id($db);
 		
 		//send a response back to the called of this php file
 		$response =array();
