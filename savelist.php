@@ -72,9 +72,9 @@
 		
 		//make video safe for sql
 		$video = makeStringSafe($db,$video);
-		
+		$query = "INSERT INTO list (listName) VALUES ('$listName')"; 
 		//make insert statement
-		$query = "INSERT INTO templateAttribute(listName,label,type,value) VALUES ('$listName','$label','$type','$value')";
+		$query = "INSERT INTO attribute(label,type,value) VALUES ('$label','$type','$value')";
 		
 		//run insert statement
 		$result = queryDB($query,$db);
