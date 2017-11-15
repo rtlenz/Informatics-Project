@@ -6,10 +6,11 @@
     $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
 	
 	
-    $_SESSION['account']=$accountid;
-    // set up a query to get the list of lists
-    $query = "SELECT * FROM list WHERE list.accountid=$accountid"; 
+    //$_SESSION['account']=$accountid;
+    //// set up a query to get the list of lists
+    //$query = "SELECT * FROM list WHERE accountid=$accountid"; 
 
+	$query = "SELECT * FROM list";
     // run the query
     $result = queryDB($query, $db);
     
@@ -24,16 +25,6 @@
         $isloggedin = true;
         $username = isset($_SESSION['username']);
     
-		//while ($list =nextTuple($result)){
-			//$lists[$i] = $list;
-			//$accountusername = $account['account'];
-			//$query = "SELECT * FROM account WHERE username ='$accountusername'";
-			//
-			//// run the query
-			//$result_item = queryDB($query, $db);
-			//$items = array();
-			//$j = 0;
-			
 			
 			while ($list = nextTuple($result)) {
 				$lists[$i] = $list;
@@ -42,7 +33,7 @@
 				
 				
 				// now get the items under the current list
-				$query = "SELECT * FROM item WHERE list_id = $listid ORDER BY ordernumber";
+				$query = "SELECT * FROM item WHERE list_id = $listid  ORDER BY ordernumber";
 				
 				// run the query
 				$result_item = queryDB($query, $db);
