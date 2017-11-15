@@ -42,7 +42,7 @@
                         alert ('error: ' + response.data.message);
                     } else {
                         //successful
-                        $window.location.href ="index.html";
+                        $window.location.href ="addList2.html";
                     }
                 } else {
                     alert('unexpected error');
@@ -98,6 +98,7 @@
                         //successful
                         // return whether logged in or not
                         $scope.isloggedin = response.data.loggedin;
+						
                     }
                 } else {
                     alert('unexpected error');
@@ -139,6 +140,8 @@
                 }
             });            
         };
+		
+		
 		
 		
 		
