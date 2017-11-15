@@ -26,16 +26,56 @@
 
 <body>      
 <div class="container" ng-controller="dataControl">
-        <!--Content for songs-->
         <div ng-include ng-init="menuHighlight = 1;" src="'listHeader.html'"></div>
+        <!--Content for songs-->
+       <div class="panel panel-default" ng-repeat="item in attribute.items | filter:query">
+        
         
         <!-- Conter -->
         <div class="row">
             <div class ="col-xs-12">
-                <h1>{{templateAttribute.listName}}</h1>
+                <h1>{{list.listName}}</h1>
             </div>
         </div>
+</div>
+<form name="listForm" novalidate>      
+        <div ng-repeat="list in data">
+            <h2>{{list.listName}}</h2>
+        </div>
         
+        
+        <div class="form-group" ng-class="{ 'has-error' : listForm.label.$invalid && listForm.label.$touched, 'has-success' : !listForm.label.$invalid && listForm.label.$touched }">
+            <label>Attribute Name</label>
+            <input type="text" class="form-control" name="label" ng-model="attribute.label" required/>
+            <p ng-show="listForm.label.$invalid && listForm.label.$touched" class="help-block">An attribute name is required</p>
+        </div>
+        
+        <div class="form-group" ng-class="{ 'has-error' : listForm.value.$invalid && listForm.value.$touched, 'has-success' : !listForm.value.$invalid && listForm.value.$touched }">
+            <label>Attribute Value</label>
+            <input type="text" class="form-control" name="value" ng-model="attribute.value" required/>
+            <p ng-show="listForm.value.$invalid && listForm.value.$touched" class="help-block">A value is required</p>
+        </div>
+        
+        <div>
+                <label>Attribute Type </label>
+                <select ng-model="attribute.type">
+                <option value="1">Text</option>
+                <option value="2">Video</option>
+                <option value="3">Image</option>
+                <option value="4">Date</option>
+                </select>
+        </div>
+        
+        <button class="btn btn-default" ng-click="saveList(attribute)" ng-disabled="listForm.$invalid">Save List</button>
+        
+        
+        
+        
+        
+
+</form>
+
+
         
         
         
