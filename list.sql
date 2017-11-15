@@ -10,7 +10,7 @@ DROP TABLE IF EXISTS templateAttribute;
 CREATE TABLE list (
     id INT NOT NULL AUTO_INCREMENT,
     name VARCHAR(120) NOT NULL,
-	accountid VARCHAR(255) NOT NULL,
+	accountid INT NOT NULL,
 	template_id INT NOT NULL,
     PRIMARY KEY (id)
 );
@@ -45,10 +45,11 @@ CREATE TABLE template(
 CREATE TABLE templateAttribute(
 	id INT NOT NULL AUTO_INCREMENT,
 	template_id INT NOT NULL,
-	listName VARCHAR(255) NOT NULL,
-	text VARCHAR(255) NOT NULL,
-	dates VARCHAR(255) NOT NULL,
-	video VARCHAR(255) NOT NULL,
+	ordernumber INT NOT NULL,
+	listName VARCHAR (255) NOT NULL,
+	label VARCHAR(120) NOT NULL,
+	type VARCHAR(120) NOT NULL,
+	value VARCHAR(255) NOT NULL,	
 	PRIMARY KEY(id)
 );
 
