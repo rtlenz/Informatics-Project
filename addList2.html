@@ -41,8 +41,14 @@
 </div>
 <form name="listForm" novalidate>      
  
+        <div class="form-group" ng-class="{ 'has-error' : listForm.name.$invalid && listForm.name.$touched, 'has-success' : !listForm.name.$invalid && listForm.name.$touched }">
+            <label>Item Name</label>
+            <input type="text" class="form-control" name="name" ng-model="item.name" required/>
+            <p ng-show="listForm.name.$invalid && listForm.name.$touched" class="help-block">An item name is required</p>
+        </div>
+        
         <div class="form-group" ng-class="{ 'has-error' : listForm.label.$invalid && listForm.label.$touched, 'has-success' : !listForm.label.$invalid && listForm.label.$touched }">
-            <label>Attribute Name</label>
+            <label>Attribute Label</label>
             <input type="text" class="form-control" name="label" ng-model="attribute.label" required/>
             <p ng-show="listForm.label.$invalid && listForm.label.$touched" class="help-block">An attribute name is required</p>
         </div>
@@ -64,9 +70,9 @@
         </div>
         
         
-        <button class="btn btn-default" ng-click="saveList(attribute)" ng-disabled="listForm.$invalid">Add to List</button>
+        <button class="btn btn-default" ng-click="saveList(attribute)" ng-disabled="listForm.$invalid">Add to Item</button>
         
-       <button class="btn btn-default"> <a href="index.html">Finished</a></button>
+       <button class="btn btn-default"> <a href="index.html">Finished with Item</a></button>
         
         
         
