@@ -10,6 +10,7 @@
 	$type = $data['type'];
 	$value = $data['value'];
 	$listName = $data['listName'];
+	$name = $data['name'];
 	
 	
 	//connect to database
@@ -21,35 +22,14 @@
 	//error message
 	$errorMessage = "";
 	
-	////check for name
-	//if(!isset($title) || (strlen($title) == 0)) {
-	//	$errorMessage .= "Please enter a name.\n";
-	//	$isComplete = false;
-	//}
-	//
-	////check for artist
-	//if(!isset($artist) || (strlen($artist) == 0)) {
-	//	$errorMessage .= "Please enter an artist.\n";
-	//	$isComplete = false;
-	//}
-	//
-	////check for release date
-	//if(!isset($releaseDate)) {
-	//	$errorMessage .= "Please enter a release date. \n";
-	//	$isComplete = false;
-	//}
-	//
-	//if(!isset($video) || (strlen($video) == 0)) {
-	//	$errorMessage .= "Please enter the code to embed a video.\n";
-	//	$isComplete = false;
-	//}
+	
 	
 	//Check for duplicates in database
 	if($isComplete){
 		//This selects from table anything entered by user
 		$query ="SELECT * FROM list WHERE listName='$listName'";
 		
-		$mysqli = new mysqli("accountid");
+		//$mysqli = new mysqli("accountid");
 		
 		//run the select statement
 		$result = queryDB($query, $db);	
@@ -62,7 +42,6 @@
 	}
 	
 	
-	
 	// proceed depending on whether the data is ready or not
 	
 	if ($isComplete){
@@ -72,9 +51,13 @@
 		
 		//make video safe for sql
 		$video = makeStringSafe($db,$video);
-		$query = "INSERT INTO list (listName) VALUES ('$listName')"; 
+		 
 		//make insert statement
+		$query = "INSERT INTO list(listName) VALUES ('$listName')";
 		$query = "INSERT INTO attribute(label,type,value) VALUES ('$label','$type','$value')";
+		
+		$query = "INSERT INTO item(name) VALUES ('$name')";
+		
 		
 		//run insert statement
 		$result = queryDB($query,$db);
