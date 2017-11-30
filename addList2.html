@@ -78,6 +78,21 @@
 </div>
 
 
+
+<!--div for review what you already have-->
+
+<div class="panel panel-default">
+        <div class="panel-heading">
+        
+                <h2>{{list.listName}}</h2>
+                <div ng-repeat="attribute in item.attributes">
+                        <h4>{{item.name}}</h4>
+                        {{attribute.label}}
+                        {{attribute.value}}
+                </div>        
+        
+        </div>
+</div>
         
         
         
