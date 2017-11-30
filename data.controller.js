@@ -42,6 +42,25 @@
                         alert ('error: ' + response.data.message);
                     } else {
                         //successful
+                        $window.location.href ="addItemName.html";
+                    }
+                } else {
+                    alert('unexpected error');
+                }
+            });
+        };
+		
+		// add to list
+		$scope.addToList = function(listDetails) {
+            var list = angular.copy(listDetails);
+            
+            $http.post("addToList.php", list)
+                .then(function (response) {
+                if (response.status == 200) {
+                    if (response.data.status == 'error') {
+                        alert ('error: ' + response.data.message);
+                    } else {
+                        //successful
                         $window.location.href ="addList2.html";
                     }
                 } else {
@@ -141,6 +160,9 @@
             });            
         };
 		
+		
+		
+		//voting on items
 		
 		
 		
