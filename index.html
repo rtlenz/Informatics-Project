@@ -46,7 +46,7 @@
 
 <!-- Lists -->
 <div ng-repeat="list in data">
-    <h2>{{list.name}}</h2>
+    <h2>{{list.listName}}</h2>
 <div class="panel panel-default" ng-repeat="item in list.items | filter:query">
     <div class="panel-heading">
             <h4>{{item.name}}</h4>
@@ -57,10 +57,20 @@
         </div>
         <div ng-if="attribute.type=='video'">
             <div class="embed-responsive embed-responsive-16by9">
-                <span ng-bind-html="attribute.value | trustHtml"></span>
+                    <span ng-bind-html="attribute.value | trustHtml"></span>
             </div>
         </div>
+        
     </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="btn-group" role="group" aria-label="...">
+                <button type="button" class="btn btn-success">Up</button>
+                <button type="button" class="btn btn-danger">Down</button>
+            </div> 
+        </div>
+    </div>
+    
 </div>
 </div>
 
