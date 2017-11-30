@@ -38,6 +38,13 @@ CREATE TABLE follow(
 	PRIMARY KEY (id)
 );
 
+CREATE TABLE vote(
+	id INT NOT NULL AUTO_INCREMENT,
+	list_id INT NOT NULL,
+	voteCount INT NOT NULL,
+	PRIMARY KEY (id)
+);
+
 
 ---- insert some records
 --INSERT INTO list (listName,accountid)  VALUES ('Baseball Players',1);
