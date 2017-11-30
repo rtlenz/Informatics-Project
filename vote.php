@@ -27,9 +27,13 @@
 		 
 		session_start();
 		$listid = $_SESSION['listid'];
+		$count = $_SESSION['voteCount'];
+        
+        $newcount = $count + 1 ;
 		//make insert statement	
-		$query = "INSERT INTO vote(list_id,voteCount) VALUES ($listid,$voteCount)";
-		
+		$query = "INSERT INTO vote(list_id,voteCount) VALUES ($listid,$newcount)";
+
+			
 		//run insert statement
 		$result = queryDB($query,$db);
 		
