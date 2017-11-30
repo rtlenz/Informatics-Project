@@ -69,6 +69,24 @@
             });
         };
         
+		// add to list
+		$scope.voteList = function(listDetails) {
+            var vote = angular.copy(listDetails);
+            
+            $http.post("vote.php", vote)
+                .then(function (response) {
+                if (response.status == 200) {
+                    if (response.data.status == 'error') {
+                        alert ('error: ' + response.data.message);
+                    } else {
+                        //successful
+                        $window.location.href ="index.html";
+                    }
+                } else {
+                    alert('unexpected error');
+                }
+            });
+        };
         // logs in
         $scope.login = function(credentialDetails) {
             var credentials = angular.copy(credentialDetails);
