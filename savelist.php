@@ -6,11 +6,12 @@
 	//get data from form
 	
 	$data =json_decode(file_get_contents('php://input'), true);
-	$label = $data['label'];
-	$type = $data['type'];
-	$value = $data['value'];
+	
 	$listName = $data['listName'];
-	$name = $data['name'];
+	
+	session_start();
+	$accountid = $_SESSION['accountid'];
+	
 	
 	
 	//connect to database
@@ -52,18 +53,18 @@
 		//make video safe for sql
 		$video = makeStringSafe($db,$video);
 		 
-		//make insert statement
-		$query = "INSERT INTO list(listName) VALUES ('$listName')";
-		$query = "INSERT INTO attribute(label,type,value) VALUES ('$label','$type','$value')";
 		
-		$query = "INSERT INTO item(name) VALUES ('$name')";
+		//make insert statement
+		$query = "INSERT INTO list(listName,accountid) VALUES ('$listName',$accountid)";
+		
 		
 		
 		//run insert statement
 		$result = queryDB($query,$db);
 		
-		//get id for players just entered
-		$id = mysqli_insert_id($db);
+		//get id for players just entered Add this to a $session variable with the list id
+		$_SESSION['listid'] = mysqli_insert_id($db);
+		
 		
 		//send a response back to the called of this php file
 		$response =array();
