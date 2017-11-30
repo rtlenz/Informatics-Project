@@ -50,7 +50,7 @@
 <div class="panel panel-default" ng-repeat="item in list.items | filter:query">
     <div class="panel-heading">
             <h4>{{item.name}}</h4>
-        </div>
+    </div>
     <div ng-repeat="attribute in item.attributes">
         <div ng-if="attribute.type=='text'">
             <strong>{{attribute.label}}</strong>: {{attribute.value}}
@@ -70,7 +70,12 @@
             </div> 
         </div>
     </div>
-    
+    <div>
+        <strong>{{vote.voteCount}}</strong> , voted
+    </div>
+    <div>
+        <button class="btn btn-default" ng-click="voteList(vote)">vote</button>        
+    </div>
 </div>
 </div>
 
