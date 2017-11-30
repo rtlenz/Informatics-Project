@@ -10,6 +10,7 @@
 	$name = $data['name'];
 	
 	
+	
 	//connect to database
 	$db = connectDB($DBHost, $DBUser,$DBPassword,$DBName);
 		
@@ -42,17 +43,24 @@
 		//make video safe for sql
 		$video = makeStringSafe($db,$video);
 		 
-		//make insert statemen	
-		$query = "INSERT INTO item(name) VALUES ('$name')";
-		$query = "INSERT INTO attribute(label,type,value) VALUES ('$label','$type','$value')";
-		
+		session_start();
+		$listid = $_SESSION['listid'];
+		//make insert statement	
+		$query = "INSERT INTO item(name,list_id,ordernumber) VALUES ('$name',$listid,0)";
 		
 		//run insert statement
 		$result = queryDB($query,$db);
 		
+		
 		//get id for players just entered Add this to a $session variable with the list id
-		$_SESSION['list_id'] = mysqli_insert_id($db);
 		$_SESSION['item_id'] = mysqli_insert_id($db);
+		$item_id = $_SESSION['item_id'];
+		
+		
+		$query = "INSERT INTO attribute(label,type,value,item_id) VALUES ('$label','$type','$value',$item_id)";
+		
+		
+		
 		
 		//send a response back to the called of this php file
 		$response =array();
