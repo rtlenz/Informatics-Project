@@ -51,10 +51,29 @@
         };
 		
 		// add to list
-		$scope.addToList = function(listDetails) {
+		$scope.addToItem = function(listDetails) {
             var list = angular.copy(listDetails);
             
-            $http.post("addToList.php", list)
+            $http.post("addToItem.php", list)
+                .then(function (response) {
+                if (response.status == 200) {
+                    if (response.data.status == 'error') {
+                        alert ('error: ' + response.data.message);
+                    } else {
+                        //successful
+                        $window.location.href ="addList2.html";
+                    }
+                } else {
+                    alert('unexpected error');
+                }
+            });
+        };
+		
+		// add to attribute
+		$scope.addToAttribute = function(listDetails) {
+            var list = angular.copy(listDetails);
+            
+            $http.post("addToAttribute.php", list)
                 .then(function (response) {
                 if (response.status == 200) {
                     if (response.data.status == 'error') {
@@ -69,7 +88,7 @@
             });
         };
         
-		// add to list
+		// vote on list
 		$scope.voteList = function(listDetails) {
             var vote = angular.copy(listDetails);
             
