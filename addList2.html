@@ -62,15 +62,15 @@
                         <div>
                                 <label>Attribute Type </label>
                                 <select ng-model="attribute.type">
-                                <option value="1">Text</option>
-                                <option value="2">Video</option>
-                                <option value="3">Image</option>
-                                <option value="4">Date</option>
+                                <option value="text">Text</option>
+                                <option value="video">Video</option>
+                                <option value="image">Image</option>
+                                <option value="date">Date</option>
                                 </select>
                         </div>
                         
                         <!--<button class="btn btn-default" ng-click="addToList(item)" ng-disabled="listForm.$invalid">Add Item Name to List</button>-->
-                        <button class="btn btn-default" ng-click="addToList(attribute)" ng-disabled="listForm.$invalid">Add Attributes to Item</button>
+                        <button class="btn btn-default" ng-click="addToAttribute(attribute)" ng-disabled="listForm.$invalid">Add Attributes to Item</button>
                         <button class="btn btn-default"><a href="addItemName.html">Add Another Item</a></button>
                        <button class="btn btn-default"> <a href="index.html">Finished with Item</a></button>
                         
