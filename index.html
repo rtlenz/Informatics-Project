@@ -29,11 +29,11 @@
 <body>
 
 <!-- container for my content -->
-<div class="container" ng-controller="dataControl">
-    
-<!-- Title -->
-<div ng-include src="'listHeader.html'"></div>
 
+<div class="container" ng-controller="dataControl">
+    <!-- Title -->
+<div ng-include src="'listHeader.html'"></div>
+  
 <!-- Content -->
 
 <!-- Search bar -->
@@ -46,40 +46,40 @@
 
 <!-- Lists -->
 <div ng-repeat="list in data">
-    <h2>{{list.listName}}</h2>
-<div class="panel panel-default" ng-repeat="item in list.items | filter:query">
-    <div class="panel-heading">
-            <h4>{{item.name}}</h4>
-    </div>
-    <div ng-repeat="attribute in item.attributes">
-        <div ng-if="attribute.type=='text'">
-            <strong>{{attribute.label}}</strong>: {{attribute.value}}
+        <h2>{{list.listName}}</h2>
+    <div class="panel panel-default" ng-repeat="item in list.items | filter:query">
+        <div class="panel-heading">
+                <h4>{{item.name}}</h4>
         </div>
-        <div ng-if="attribute.type=='video'">
-            <div class="embed-responsive embed-responsive-16by9">
-                    <span ng-bind-html="attribute.value | trustHtml"></span>
+        <div ng-repeat="attribute in item.attributes">
+            <div ng-if="attribute.type=='text'">
+                <strong>{{attribute.label}}</strong>: {{attribute.value}}
+            </div>
+            <div ng-if="attribute.type=='video'">
+                <div class="embed-responsive embed-responsive-16by9">
+                        <span ng-bind-html="attribute.value | trustHtml"></span>
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="btn-group" role="group" aria-label="...">
+                    <button type="button" class="btn btn-success" ng-click="voteList(vote)">Up</button>
+                    <button type="button" class="btn btn-danger" ng-click="voteDownList(vote)">Down</button>
+                </div> 
             </div>
         </div>
         
-    </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="btn-group" role="group" aria-label="...">
-                <button type="button" class="btn btn-success">Up</button>
-                <button type="button" class="btn btn-danger">Down</button>
-            </div> 
+        <div>
+            <strong>{{vote.voteCount}}</strong> 
         </div>
-    </div>
-    <div>
-        <strong>{{vote.voteCount}}</strong> , voted
-    </div>
-    <div>
-        <button class="btn btn-default" ng-click="voteList(vote)">vote</button>        
+        <!--<div>
+            <button class="btn btn-default" ng-click="voteList(vote)">Vote</button>        
+        </div>-->
     </div>
 </div>
-</div>
-
-
+    
     
 </div>
 
