@@ -234,7 +234,41 @@
                 }
             });            
         };
+		$scope.updateList = function(listDetails){
+			var list = angular.copy(listDetails);
+			
+			$http.post("editlistname.php", list)
+			.then(function(response){
+				if(response.status == 200){
+					if(response.data.status == 'error'){
+						alert ('error: ' + response.data.message);
+					} else{
+						//successful
+						$window.location.href ="index.html";
+					}
+				} else{
+					alert('unexpected error');
+				}
+			});
+		};
 		
+		$scope.setEditMode= function(on,item){
+			if(on){
+				//put in edit mode
+				$scope.editlist= angular.copy(item);
+				item.editMode =true;
+			}else{
+				//no edit
+				item.editMode = false;
+			}
+		};
+		
+		
+		//returns editMode for the current item
+		
+		$scope.getEditMode = function(item){
+			return item.editMode;
+		};
 	
 		
 		
