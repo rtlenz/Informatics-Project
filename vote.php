@@ -1,10 +1,10 @@
 <?php
 	include_once('config.php');
 	include_once('dbutils.php');
-
+		
 
 	$data =json_decode(file_get_contents('php://input'), true);
-	$voteCount = $data['voteCount'];
+	//$voteCount = $data['voteCount'];
 	
 	
 	//connect to database
@@ -21,18 +21,17 @@
 	
 	if ($isComplete){
 		//everything works
-		
-		//make video safe for sql
-		$video = makeStringSafe($db,$video);
+	
 		 
 		session_start();
 		$listid = $_SESSION['listid'];
 		$count = $_SESSION['voteCount'];
-        
-        $newcount = $count + 1 ;
+		$accountid = $_SESSION['accountid'];
+		
+        $count++; 
 		//make insert statement	
-		$query = "INSERT INTO vote(list_id,voteCount) VALUES ($listid,$newcount)";
-
+		$query = "INSERT INTO vote(list_id,voteCount,accountid) VALUES ($listid,$count,$accountid)";
+		$_SESSION['voteCount'] = $count;
 			
 		//run insert statement
 		$result = queryDB($query,$db);
