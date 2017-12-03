@@ -88,11 +88,30 @@
             });
         };
         
-		// vote on list
+		// vote up on list
 		$scope.voteList = function(listDetails) {
             var vote = angular.copy(listDetails);
             
             $http.post("vote.php", vote)
+                .then(function (response) {
+                if (response.status == 200) {
+                    if (response.data.status == 'error') {
+                        alert ('error: ' + response.data.message);
+                    } else {
+                        //successful
+                        $window.location.href ="index.html";
+                    }
+                } else {
+                    alert('unexpected error');
+                }
+            });
+        };
+		
+		// vote down on list
+		$scope.voteDownList = function(listDetails) {
+            var vote = angular.copy(listDetails);
+            
+            $http.post("votedown.php", vote)
                 .then(function (response) {
                 if (response.status == 200) {
                     if (response.data.status == 'error') {
@@ -197,15 +216,7 @@
             });            
         };
 		
-		
-		
-		//voting on items
-		
-		
-		
-		
-		
-		
+	
 		
 		
 		//These are variables used for the search bar//
