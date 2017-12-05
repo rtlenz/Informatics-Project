@@ -16,16 +16,31 @@
 	//error message
 	$errorMessage = "";
 	
-	//Check for duplicates in database
-	
-	
+	session_start();
+	$list_id = $_SESSION['listid'];
+	$accountid = $_SESSION['accountid'];
+	//Checks if user already voted on a list
+	//Checks if user already voted on the list
+	if($isComplete){
+		//This selects from table anything entered by user
+		$query ="SELECT * FROM vote WHERE list_id=$list_id AND accountid=$accountid";
+		
+		//$mysqli = new mysqli("accountid");
+		
+		//run the select statement
+		$result = queryDB($query, $db);	
+		
+		if(nTuples($result) > 0){
+			//there is a duplicate
+			$isComplete = false;
+			$errorMessage .= "You already voted on this list";
+		}
+	}
 	if ($isComplete){
 		//everything works
 	
 		 
-		session_start();
-		$list_id = $_SESSION['listid'];
-		$accountid = $_SESSION['accountid'];
+		
 		 
 		//make insert statement	
 		$query = "INSERT INTO vote(list_id,voteCount,accountid) VALUES ($list_id,1,$accountid)";
