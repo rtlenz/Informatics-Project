@@ -7,6 +7,8 @@
 	$label = $data['label'];
 	$type = $data['type'];
 	$value = $data['value'];
+	$ordernumber = $data['ordernumber'];
+	
 	
 	
 	
@@ -29,12 +31,13 @@
 		 
 		session_start();
 		$item_id = $_SESSION['item_id'];
-		//make insert statement	
+		
 		
 		$query = "INSERT INTO attribute(label,type,value,item_id,ordernumber) VALUES ('$label','$type','$value',$item_id,0)";
 		
 		//run insert statement
 		$result = queryDB($query,$db);
+		
 		
 		
 		//send a response back to the called of this php file
