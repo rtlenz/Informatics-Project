@@ -17,22 +17,7 @@
 	//error message
 	$errorMessage = "";
 	
-	//Check for duplicates in database
-	if($isComplete){
-		//This selects from table anything entered by user
-		$query ="SELECT * FROM item WHERE name='$name'";
-		
-		//$mysqli = new mysqli("accountid");
-		
-		//run the select statement
-		$result = queryDB($query, $db);	
-		
-		if(nTuples($result) > 0){
-			//there is a duplicate
-			$isComplete = false;
-			$errorMessage .= "An item with name: $name is already in the database";
-		}
-	}
+	
 	
 	if ($isComplete){
 		//everything works
