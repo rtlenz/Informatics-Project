@@ -16,15 +16,31 @@
 	//error message
 	$errorMessage = "";
 	
-	//Check for duplicates in database
-	//Select statement here checking if account id is in db and then do if statements. Make one vote.php
+	session_start();
+	$list_id = $_SESSION['listid'];
+	$accountid = $_SESSION['accountid'];
+	
+	//Checks if user already voted on the list
+	if($isComplete){
+		//This selects from table anything entered by user
+		$query ="SELECT * FROM vote WHERE list_id=$list_id AND accountid=$accountid";
+		
+		//$mysqli = new mysqli("accountid");
+		
+		//run the select statement
+		$result = queryDB($query, $db);	
+		
+		if(nTuples($result) > 0){
+			//there is a duplicate
+			$isComplete = false;
+			$errorMessage .= "You already voted on this list";
+		}
+	}
 	
 	if ($isComplete){
 		//everything works
 		
-		session_start();
-		$list_id = $_SESSION['listid'];
-		$accountid = $_SESSION['accountid'];
+		
 		
         
 		//make insert statement	
@@ -38,7 +54,9 @@
 		$query = "UPDATE list SET voteCount = voteCount + 1 WHERE id=$list_id";
 
 		//run insert statement
-		$result = queryDB($query,$db);	
+		$result = queryDB($query,$db);
+		
+		
 	
 		//send a response back to the called of this php file
 		$response =array();
