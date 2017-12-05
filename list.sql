@@ -2,8 +2,8 @@
 DROP TABLE IF EXISTS attribute;
 DROP TABLE IF EXISTS item;
 DROP TABLE IF EXISTS list;
-DROP TABLE IF EXISTS template;
 DROP TABLE IF EXISTS follow;
+DROP TABLE IF EXISTS vote;
 
 
 
@@ -11,6 +11,7 @@ CREATE TABLE list (
     id INT NOT NULL AUTO_INCREMENT,
     listName VARCHAR(120) NOT NULL,
 	accountid INT NOT NULL,
+	voteCount INT NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -39,10 +40,11 @@ CREATE TABLE follow(
 );
 
 CREATE TABLE vote(
-	id INT NOT NULL AUTO_INCREMENT,
+	vote_id INT NOT NULL AUTO_INCREMENT,
+	accountid INT NOT NULL,
 	list_id INT NOT NULL,
 	voteCount INT NOT NULL,
-	PRIMARY KEY (id)
+	PRIMARY KEY (vote_id)
 );
 
 
