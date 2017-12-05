@@ -24,18 +24,20 @@
 	
 		 
 		session_start();
-		$list_id = $_SESSION['list_id'];
-		$count = $_SESSION['voteCount'];
+		$list_id = $_SESSION['listid'];
 		$accountid = $_SESSION['accountid'];
-		
-        $count--; 
+		 
 		//make insert statement	
-		$query = "INSERT INTO vote(list_id,voteCount,accountid) VALUES ($list_id,$count,$accountid)";
-		$_SESSION['voteCount'] = $count;
+		$query = "INSERT INTO vote(list_id,voteCount,accountid) VALUES ($list_id,1,$accountid)";
 			
 		//run insert statement
 		$result = queryDB($query,$db);
 		
+		// update the list table with new count
+		$query = "UPDATE list SET voteCount = voteCount - 1 WHERE id=$list_id";
+		
+		
+		$result = queryDB($query,$db);
 		//send a response back to the called of this php file
 		$response =array();
 		$response['status'] = 'success';
