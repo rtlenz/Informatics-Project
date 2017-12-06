@@ -56,10 +56,12 @@
                 <ul class="list-group">
                     <li class="list-group-item" class="panel-body" ng-repeat="item in list.items | filter:query">
                             <h4>{{item.name}}</h4>
+                            <p><button class="btn btn-primary" ng-show="isloggedin" ng-click="setEditMode(true, list)">Edit</button></p>
                             <ul class="list-group">
                                 <li class="list-group-item"  ng-repeat="attribute in item.attributes">
                                         <div ng-if="attribute.type=='text'">
                                             <strong>{{attribute.label}}</strong>: {{attribute.value}}
+                                            
                                         </div>
                                         <div ng-if="attribute.type=='video'">
                                             <div class="col-sm-6 col-xs-12">
@@ -73,6 +75,7 @@
                                                 <span ng-bind-html="attribute.value | trustHtml"></span>
                                             </img>
                                         </div>
+                                    <p><button class="btn btn-primary" ng-show="isloggedin" ng-click="setEditMode(true, list)">Edit</button></p>    
                                 </li>
                             </ul>    
                     </li>
@@ -80,12 +83,12 @@
             </div>
                 <div class="btn-group" role="group" aria-label="...">
                     <p><button type="button" class="btn btn-danger" ng-click="deleteList(list.listName, list.id)">Delete</button></p>
-                    <p><button class="btn btn-primary" ng-show="isloggedin" ng-click="setEditMode(true, list, item, attribute)">Edit</button></p>
+                    <!--<p><button class="btn btn-primary" ng-show="isloggedin" ng-click="setEditMode(true, list)">Edit</button></p>-->
                 </div>
             
             <div class="panel-footer">
-                <button type="button" class="btn btn-success" ng-click="voteList(vote)">Up</button>
-                <button type="button" class="btn btn-danger" ng-click="voteDownList(vote)">Down</button>
+                <button type="button" class="btn btn-success" ng-click="voteList()">Up</button>
+                <button type="button" class="btn btn-danger" ng-click="voteDownList()">Down</button>
                 <strong>Number of Votes: {{list.voteCount}}</strong> 
             </div>   
             
@@ -93,32 +96,38 @@
     <div ng-if="getEditMode(list)">
             <form name ="enterListForm" novalidate>
                 <div class="panel-heading">
+                    <!-- Edit List Name -->
                     <div class="form-group" ng-class= "{ 'has-error' : enterListForm.listName.$invalid && enterListForm.listName.$touched, 'has-success' : !enterListForm.listName.$invalid && enterListForm.listName.$touched }">
                         <input type="text" class="form-control" name="listName" ng-model="editlist.listName" required/>
                         <p ng-show="enterListForm.listName.$invalid && enterListForm.listName.$touched" class="help-block">A list name is required</p>
                     </div>
                     <p><button class="btn btn-primary" ng-disabled="enterListForm.$invalid" ng-click="updateList(editlist)">Save</button></p>
-                </div>   
-                <div class="panel-body">
-                    <div class="col-sm-9 col-xs-12">
-                        <div class="form-group" ng-class= "{ 'has-error' : enterListForm.name.$invalid && enterListForm.name.$touched, 'has-success' : !enterListForm.name.$invalid && enterListForm.name.$touched }">
-                            <input type="text" class="form-control" name="name" ng-model="editlist.name" required/>
-                            <p ng-show="enterListForm.name.$invalid && enterListForm.name.$touched" class="help-block">An item name is required</p>
-                        </div>
-                        <p><button class="btn btn-primary" ng-disabled="enterListForm.$invalid" ng-click="updateItem(editlist)">Save</button></p>
-                        
-                        <div class="form-group" ng-class= "{ 'has-error' : enterListForm.label.$invalid && enterListForm.label.$touched, 'has-success' : !enterListForm.label.$invalid && enterListForm.label.$touched }">
-                            <input type="text" class="form-control" name="label" ng-model="editlist.label" required/>
-                            <p ng-show="enterListForm.label.$invalid && enterListForm.label.$touched" class="help-block">A label is required</p>
-                        </div>
-                        <p><button class="btn btn-primary" ng-disabled="enterListForm.$invalid" ng-click="updateAttribute(editlist)">Save</button></p>
-                        
-                        <div class="form-group" ng-class= "{ 'has-error' : enterListForm.value.$invalid && enterListForm.value.$touched, 'has-success' : !enterListForm.value.$invalid && enterListForm.value.$touched }">
-                            <input type="text" class="form-control" name="value" ng-model="editlist.value" required/>
-                            <p ng-show="enterListForm.value.$invalid && enterListForm.value.$touched" class="help-block">A value is required</p>
-                        </div>
-                        <p><button class="btn btn-primary" ng-disabled="enterListForm.$invalid" ng-click="updateAttribute(editlist)">Save</button></p>
-                    </div>         
+                   
+                    <div class="panel-body">
+                        <div class="col-sm-9 col-xs-12">
+                            <!-- Edit Item Name -->
+                            <div class="form-group" ng-class= "{ 'has-error' : enterListForm.name.$invalid && enterListForm.name.$touched, 'has-success' : !enterListForm.name.$invalid && enterListForm.name.$touched }">
+                                <input type="text" class="form-control" name="name" ng-model="editlist.name" required/>
+                                <p ng-show="enterListForm.name.$invalid && enterListForm.name.$touched" class="help-block">An item name is required</p>
+                                <p><button class="btn btn-primary" ng-disabled="enterListForm.$invalid" ng-click="updateItem(editlist)">Save</button></p>
+                            </div>
+                            <!-- Edit Attribute Label -->
+                            <div class="form-group" ng-class= "{ 'has-error' : enterListForm.label.$invalid && enterListForm.label.$touched, 'has-success' : !enterListForm.label.$invalid && enterListForm.label.$touched }">
+                                <input type="text" class="form-control" name="label" ng-model="editlist.label" required/>
+                                <p ng-show="enterListForm.label.$invalid && enterListForm.label.$touched" class="help-block">A label is required</p>
+                                <p><button class="btn btn-primary" ng-disabled="enterListForm.$invalid" ng-click="updateAttribute(editlist)">Save</button></p>
+                            </div>
+                            
+                            
+                             <!-- Edit Attribute Value -->
+                            <div class="form-group" ng-class= "{ 'has-error' : enterListForm.value.$invalid && enterListForm.value.$touched, 'has-success' : !enterListForm.value.$invalid && enterListForm.value.$touched }">
+                                <input type="text" class="form-control" name="value" ng-model="editlist.value" required/>
+                                <p ng-show="enterListForm.value.$invalid && enterListForm.value.$touched" class="help-block">A value is required</p>
+                                <p><button class="btn btn-primary" ng-disabled="enterListForm.$invalid" ng-click="updateAttribute(editlist)">Save</button></p>
+                            </div>
+                            
+                        </div>         
+                    </div>
                 </div>
                 <p><button class="btn btn-primary" ng-click="setEditMode(false,list)">Cancel</button></p>
             </form>  
