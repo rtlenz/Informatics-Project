@@ -5,6 +5,7 @@
 
 	$data =json_decode(file_get_contents('php://input'), true);
 	//$count = $data['voteCount'];
+	$vote =$data['vote'];
 	
 	
 	//connect to database
@@ -20,6 +21,10 @@
 	$list_id = $_SESSION['listid'];
 	$accountid = $_SESSION['accountid'];
 	
+	
+	 
+	$alreadyvotedonthislist = false;
+	
 	//Checks if user already voted on the list
 	if($isComplete){
 		//This selects from table anything entered by user
@@ -32,8 +37,14 @@
 		
 		if(nTuples($result) > 0){
 			//there is a duplicate
-			$isComplete = false;
-			$errorMessage .= "You already voted on this list";
+			$row = nextTuple($result);
+			$vote = $row['vote'];
+			if ($vote == 1) {
+				$isComplete = false;
+				$errorMessage .= "You already voted on this list";
+			} else {
+				$alreadyvotedonthislist = true;
+			}
 		}
 	}
 	
@@ -42,19 +53,22 @@
 		
 		
 		
-        
-		//make insert statement	
-		$query = "INSERT INTO vote(list_id,voteCount,accountid) VALUES ($list_id,1,$accountid)";
-		
-			
+        if (!$alreadyvotedonthislist) {
+			//make insert statement	
+			$query = "INSERT INTO vote(list_id,vote,accountid) VALUES ($list_id,+1,$accountid)";
+		} else {
+			// update vote 
+			$query="UPDATE vote SET vote = vote + 1 WHERE list_id=$list_id";
+		}
 		//run insert statement
 		$result = queryDB($query,$db);
 		
 		// update the list table with new count
 		$query = "UPDATE list SET voteCount = voteCount + 1 WHERE id=$list_id";
-
+		
 		//run insert statement
 		$result = queryDB($query,$db);
+		
 		
 		
 	
