@@ -55,7 +55,6 @@
                 <ul class="list-group">
                     <li class="list-group-item" class="panel-body" ng-repeat="item in list.items | filter:query">
                             <h4>{{item.name}}</h4>
-                            <p><button type="button" class="btn btn-danger" ng-click="deleteItem(item.name, item.id)">Delete Item</button></p>
                             <ul class="list-group">
                                 <li class="list-group-item"  ng-repeat="attribute in item.attributes">
                                         <div ng-if="attribute.type=='text'">
@@ -76,19 +75,24 @@
                                         </div>
                                 </li>
                             </ul>
+                            <p><button type="button" class="btn btn-danger btn-xs" ng-click="deleteItem(item.name, item.id)">
+                            <span class="glyphicon glyphicon-trash"></span>
+                            </button></p>
                     </li>
                 </ul>
-                <p><button class="btn btn-primary" ng-show="isloggedin"><a href="addItemName.html">Add New Iteam</a></button></p>    
+                
+                <p><button class="btn btn-primary" ng-show="isloggedin" href="edititem.html">
+                <span class="glyphicon glyphicon-plus"></span>
+                Add New Item
+                </button></p>    
 
             </div>
-                <div class="btn-group" role="group" aria-label="...">
-                    <p><button type="button" class="btn btn-danger" ng-click="deleteList(list.listName, list.id)">Delete List</button></p>
-                    <!--<p><button class="btn btn-primary" ng-show="isloggedin" ng-click="setEditMode(true, list)">Edit</button></p>-->
-                </div>
+                
             
             <div class="panel-footer">
-                <button type="button" class="btn btn-success" ng-click="voteList()">Up</button>
-                <button type="button" class="btn btn-danger" ng-click="voteDownList()">Down</button>
+                <p><button type="button" class="btn btn-danger" ng-click="deleteList(list.listName, list.id)">Delete List</button></p>
+                <button type="button" class="btn btn-success" ng-click="voteList(list.id)">Up</button>
+                <button type="button" class="btn btn-danger" ng-click="voteDownList(list.id)">Down</button>
                 <strong>Number of Votes: {{list.voteCount}}</strong> 
             </div>   
             
