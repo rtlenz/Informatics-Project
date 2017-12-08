@@ -12,6 +12,7 @@ CREATE TABLE list (
     listName VARCHAR(120) NOT NULL,
 	accountid INT NOT NULL,
 	voteCount INT NOT NULL,
+	privacy VARCHAR(120) NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -34,6 +35,7 @@ CREATE TABLE attribute (
 );
 CREATE TABLE follow(
 	id INT NOT NULL AUTO_INCREMENT,
+	username VARCHAR(120) NOT NULL,
 	followerid INT NOT NULL,
 	followedid INT NOT NULL,
 	PRIMARY KEY (id)
@@ -43,11 +45,13 @@ CREATE TABLE vote(
 	vote_id INT NOT NULL AUTO_INCREMENT,
 	accountid INT NOT NULL,
 	list_id INT NOT NULL,
-	voteCount INT NOT NULL,
+	vote INT NOT NULL,
 	PRIMARY KEY (vote_id)
 );
 
-
+INSERT INTO follow (username,followerid,followedid) VALUES ('Ricky',1,1);
+INSERT INTO follow (username,followerid,followedid) VALUES ('Luan',2,2);
+INSERT INTO follow (username,followerid,followedid) VALUES ('Noah',3,3);
 ---- insert some records
 --INSERT INTO list (listName,accountid)  VALUES ('Baseball Players',1);
 --INSERT INTO item (list_id, name, ordernumber) VALUES (1, 'Frank Thomas', 0);
