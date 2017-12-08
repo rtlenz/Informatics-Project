@@ -5,6 +5,7 @@
 
 	$data =json_decode(file_get_contents('php://input'), true);
 	$vote= $data['vote'];
+	$list_id =$data['listid'];
 	
 	
 	//connect to database
@@ -17,7 +18,6 @@
 	$errorMessage = "";
 	
 	session_start();
-	$list_id = $_SESSION['listid'];
 	$accountid = $_SESSION['accountid'];
 	//Checks if user already voted on a list
 	
