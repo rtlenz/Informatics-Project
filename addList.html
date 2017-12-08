@@ -48,11 +48,12 @@
         <button class="btn btn-default" ng-click="saveList(list)" ng-disabled="listForm.$invalid">Save List</button>
         <div class="row">
                 <div class="col-xs-12">
-                        <input type="radio" id="toggle-on" name="toggle" checked
-                        ><label for="toggle-on"> Public</label
-                         ><input type="radio" id="toggle-off" name="toggle"
-                        ><label for="toggle-off"> Private</label>
-                        
+                                <label>Privacy </label>
+                                <select ng-model="list.privacy">
+                                <option value="public">Public</option>
+                                <option value="private">Private</option>>
+                                </select>
+
                 </div>
         </div>
         
