@@ -8,6 +8,7 @@
 	$data =json_decode(file_get_contents('php://input'), true);
 	
 	$listName = $data['listName'];
+	$privacy = $data['privacy'];
 	
 	session_start();
 	$accountid = $_SESSION['accountid'];
@@ -55,14 +56,14 @@
 		 
 		
 		//make insert statement
-		$query = "INSERT INTO list(listName,accountid) VALUES ('$listName',$accountid)";
+		$query = "INSERT INTO list(listName,accountid,privacy) VALUES ('$listName',$accountid,'$privacy')";
 		
 		
 		
 		//run insert statement
 		$result = queryDB($query,$db);
 		
-		//get id for players just entered Add this to a $session variable with the list id
+		//get id for list just entered Add this to a $session variable with the list id
 		$_SESSION['listid'] = mysqli_insert_id($db);
 		
 		
