@@ -89,10 +89,10 @@
         };
         
 		// vote up on list
-		$scope.voteList = function(listDetails) {
-            var vote = angular.copy(listDetails);
+		$scope.voteList = function() {
             
-            $http.post("vote.php", vote)
+            
+            $http.post("vote.php", {"vote":"1"})
                 .then(function (response) {
                 if (response.status == 200) {
                     if (response.data.status == 'error') {
@@ -108,10 +108,10 @@
         };
 		
 		// vote down on list
-		$scope.voteDownList = function(listDetails) {
-            var vote = angular.copy(listDetails);
+		$scope.voteDownList = function() {
             
-            $http.post("votedown.php", vote)
+            
+            $http.post("votedown.php", {"vote":"-1"})
                 .then(function (response) {
                 if (response.status == 200) {
                     if (response.data.status == 'error') {
@@ -238,6 +238,42 @@
 			var list = angular.copy(listDetails);
 			
 			$http.post("editlistname.php", list)
+			.then(function(response){
+				if(response.status == 200){
+					if(response.data.status == 'error'){
+						alert ('error: ' + response.data.message);
+					} else{
+						//successful
+						$window.location.href ="index.html";
+					}
+				} else{
+					alert('unexpected error');
+				}
+			});
+		};
+		
+		$scope.updateItem = function(listDetails){
+			var list = angular.copy(listDetails);
+			
+			$http.post("editItemName.php", list)
+			.then(function(response){
+				if(response.status == 200){
+					if(response.data.status == 'error'){
+						alert ('error: ' + response.data.message);
+					} else{
+						//successful
+						$window.location.href ="index.html";
+					}
+				} else{
+					alert('unexpected error');
+				}
+			});
+		};
+		
+		$scope.updateAttribute = function(listDetails){
+			var list = angular.copy(listDetails);
+			
+			$http.post("editAttribute.php", list)
 			.then(function(response){
 				if(response.status == 200){
 					if(response.data.status == 'error'){

@@ -4,7 +4,7 @@
 		
 
 	$data =json_decode(file_get_contents('php://input'), true);
-	//$voteCount = $data['voteCount'];
+	$vote= $data['vote'];
 	
 	
 	//connect to database
@@ -20,20 +20,28 @@
 	$list_id = $_SESSION['listid'];
 	$accountid = $_SESSION['accountid'];
 	//Checks if user already voted on a list
-	//Checks if user already voted on the list
+	
+	$alreadyvotedonthislist = false;
+	
 	if($isComplete){
 		//This selects from table anything entered by user
 		$query ="SELECT * FROM vote WHERE list_id=$list_id AND accountid=$accountid";
 		
-		//$mysqli = new mysqli("accountid");
+		
 		
 		//run the select statement
 		$result = queryDB($query, $db);	
 		
 		if(nTuples($result) > 0){
 			//there is a duplicate
-			$isComplete = false;
-			$errorMessage .= "You already voted on this list";
+			$row = nextTuple($result);
+			$vote = $row['vote'];
+			if ($vote == -1) {
+				$isComplete = false;
+				$errorMessage .= "You already voted on this list";
+			} else {
+				$alreadyvotedonthislist = true;
+			}
 		}
 	}
 	if ($isComplete){
@@ -41,9 +49,13 @@
 	
 		 
 		
-		 
-		//make insert statement	
-		$query = "INSERT INTO vote(list_id,voteCount,accountid) VALUES ($list_id,1,$accountid)";
+		 if (!$alreadyvotedonthislist) {
+			//make insert statement	
+			$query = "INSERT INTO vote(list_id,vote,accountid) VALUES ($list_id,-1,$accountid)";
+		} else {
+			// update vote 
+			$query="UPDATE vote SET vote = vote - 1 WHERE list_id=$list_id";
+		}
 			
 		//run insert statement
 		$result = queryDB($query,$db);
@@ -54,6 +66,7 @@
 		
 		$result = queryDB($query,$db);
 		//send a response back to the called of this php file
+		
 		$response =array();
 		$response['status'] = 'success';
 		$response['id'] = $id;
