@@ -6,16 +6,16 @@
     $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
 	
 	
-    //$_SESSION['account']=$accountid;
+    //$accountid= $_SESSION['account.id'];
     //// set up a query to get the list of lists
     //$query = "SELECT * FROM list WHERE accountid=$accountid"; 
 
-	$query = "SELECT * FROM list";
+	//$query = "SELECT * FROM list";
     // run the query
-    $result = queryDB($query, $db);
+    //$result = queryDB($query, $db);
     
     // assign results to array
-    $lists = array();
+    //$lists = array();
     $i = 0;
 	$isloggedin = false;
     $username = "not logged in";
@@ -24,7 +24,12 @@
     if (isset($_SESSION['username'])) {
         $isloggedin = true;
         $username = isset($_SESSION['username']);
-    
+		
+		//set up query to get specific lists for each account
+		$accountid= $_SESSION['accountid'];
+		$query = "SELECT * FROM list WHERE accountid=$accountid";
+		$result = queryDB($query, $db);
+		$lists = array();
 			
 			while ($list = nextTuple($result)) {
 				$lists[$i] = $list;
