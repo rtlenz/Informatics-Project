@@ -6,16 +6,7 @@
     $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
 	
 	
-    //$accountid= $_SESSION['account.id'];
-    //// set up a query to get the list of lists
-    //$query = "SELECT * FROM list WHERE accountid=$accountid"; 
 
-	//$query = "SELECT * FROM list";
-    // run the query
-    //$result = queryDB($query, $db);
-    
-    // assign results to array
-    //$lists = array();
     $i = 0;
 	$isloggedin = false;
     $username = "not logged in";
@@ -27,7 +18,7 @@
 		
 		//set up query to get specific lists for each account
 		$accountid= $_SESSION['accountid'];
-		$query = "SELECT * FROM list WHERE accountid=$accountid";
+		$query = "SELECT * FROM list WHERE accountid=$accountid AND privacy='public'";
 		$result = queryDB($query, $db);
 		$lists = array();
 			
