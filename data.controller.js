@@ -144,11 +144,31 @@
             });
         };        
         
-		// function to delete a player
+		// function to delete a list
 		$scope.deleteList = function(listName, id){
 			if(confirm("Are you sure you want to delete " + listName +"?")){
 				
 				$http.post("deletelist.php", {"id" : id})
+				.then(function(response){
+					if(response.status == 200){
+						if(response.data.status == 'error'){
+							alert ('error: ' + response.data.message);
+						} else{
+							//successful
+							$window.location.href ="index.html";
+						}
+					} else{
+						alert('unexpected error');
+					}
+				});
+			}
+		};
+		
+		// function to delete a item
+		$scope.deleteItem = function(name, id){
+			if(confirm("Are you sure you want to delete " + name +"?")){
+				
+				$http.post("deleteitem.php", {"id" : id})
 				.then(function(response){
 					if(response.status == 200){
 						if(response.data.status == 'error'){
