@@ -6,6 +6,9 @@
 	$data =json_decode(file_get_contents('php://input'), true);
 	//$count = $data['voteCount'];
 	$vote =$data['vote'];
+	$list_id =$data['listid'];
+	
+	
 	
 	
 	//connect to database
@@ -18,7 +21,6 @@
 	$errorMessage = "";
 	
 	session_start();
-	$list_id = $_SESSION['listid'];
 	$accountid = $_SESSION['accountid'];
 	
 	
@@ -30,7 +32,7 @@
 		//This selects from table anything entered by user
 		$query ="SELECT * FROM vote WHERE list_id=$list_id AND accountid=$accountid";
 		
-		//$mysqli = new mysqli("accountid");
+		
 		
 		//run the select statement
 		$result = queryDB($query, $db);	
