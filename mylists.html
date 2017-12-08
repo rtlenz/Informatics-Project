@@ -1,0 +1,98 @@
+<!doctype html>
+
+<html ng-app="list">
+<head>
+    <title>Our Amazing Project</title>
+   <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<!-- AngularJS -->
+<script src="../angular/angular.min.js"></script>
+
+<!-- Music Module -->
+<script type = "text/javascript" src ="list.module.js"></script>
+
+<!-- Data Controller -->
+<script type="text/javascript" src="mylist.controller.js"></script>
+
+<!-- trust html filter -->
+<script type="text/javascript" src="list.filter.js"></script>
+</head>
+
+<body>
+
+<!-- container for my content -->
+
+<div class="container" ng-controller="myControl">
+    <!-- Title -->
+<div ng-include ng-init ="menuHighlight =5;" src="'listHeader.html'"></div>
+  
+
+
+<!-- Search bar -->
+<div class="row">
+    <div class="col-xs-12">
+        <p>Search: <input ng-model="query[queryBy]" /></p>
+    </div>
+</div>
+
+
+<!-- Lists -->
+
+<div class="panel panel-default" ng-repeat="list in data | filter:query">
+    <div ng-init="setEditMode(false,list)"></div>
+    
+    <!--Panel in Read Mode -->
+            <div class="panel-heading">
+                <h2>{{list.listName}}</h2>
+                <ul class="list-group">
+                    <li class="list-group-item" class="panel-body" ng-repeat="item in list.items | filter:query">
+                            <h4>{{item.name}}</h4>
+                            <p><button type="button" class="btn btn-danger" ng-click="deleteItem(item.name, item.id)">Delete Item</button></p>
+                            <ul class="list-group">
+                                <li class="list-group-item"  ng-repeat="attribute in item.attributes">
+                                        <div ng-if="attribute.type=='text'">
+                                            <strong>{{attribute.label}}</strong>: {{attribute.value}}
+                                            
+                                        </div>
+                                        <div ng-if="attribute.type=='video'">
+                                            <div class="col-sm-6 col-xs-12">
+                                                <div class="embed-responsive embed-responsive-16by9">
+                                                    <span ng-bind-html="attribute.value | trustHtml"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div ng-if="attribute.type=='image'">
+                                            <img class="img-responsive">
+                                                <span ng-bind-html="attribute.value | trustHtml"></span>
+                                            </img>
+                                        </div>
+                                </li>
+                            </ul>
+                    </li>
+                </ul>
+                <p><button class="btn btn-primary" ng-show="isloggedin"><a href="edititem.html">Add New Item</a></button></p>    
+
+            </div>
+                <div class="btn-group" role="group" aria-label="...">
+                    <p><button type="button" class="btn btn-danger" ng-click="deleteList(list.listName, list.id)">Delete List</button></p>
+                    <!--<p><button class="btn btn-primary" ng-show="isloggedin" ng-click="setEditMode(true, list)">Edit</button></p>-->
+                </div>
+            
+            
+    
+</div>
+   
+</div>
+    
+
+</body>
+</html>
+
