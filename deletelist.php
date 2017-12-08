@@ -1,6 +1,6 @@
 <?php
 
-//Deletes player. Get player id in json object
+//Deletes a list
 include_once('config.php');
 include_once('dbutils.php');
 
