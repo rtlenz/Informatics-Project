@@ -10,6 +10,9 @@
 			
 		});
 		
+	
+	
+		
 		//Acount Related Functions
 		
 		//Save new account
@@ -89,10 +92,10 @@
         };
         
 		// vote up on list
-		$scope.voteList = function() {
+		$scope.voteList = function(listid) {
             
             
-            $http.post("vote.php", {"vote":"1"})
+            $http.post("vote.php", {"vote":"1", "listid":listid})
                 .then(function (response) {
                 if (response.status == 200) {
                     if (response.data.status == 'error') {
@@ -108,10 +111,10 @@
         };
 		
 		// vote down on list
-		$scope.voteDownList = function() {
+		$scope.voteDownList = function(listid) {
             
             
-            $http.post("votedown.php", {"vote":"-1"})
+            $http.post("votedown.php", {"vote":"-1", "listid":listid})
                 .then(function (response) {
                 if (response.status == 200) {
                     if (response.data.status == 'error') {
@@ -254,6 +257,9 @@
                 }
             });            
         };
+		
+		
+		//Updates the list name
 		$scope.updateList = function(listDetails){
 			var list = angular.copy(listDetails);
 			
@@ -271,7 +277,7 @@
 				}
 			});
 		};
-		
+		//Edit item
 		$scope.updateItem = function(listDetails){
 			var list = angular.copy(listDetails);
 			
@@ -282,7 +288,7 @@
 						alert ('error: ' + response.data.message);
 					} else{
 						//successful
-						$window.location.href ="index.html";
+						$window.location.href ="addList2.html";
 					}
 				} else{
 					alert('unexpected error');
