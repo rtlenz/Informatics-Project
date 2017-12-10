@@ -32,6 +32,7 @@
 		session_start();
 		$item_id = $_SESSION['item_id'];
 		
+	
 		
 		$query = "INSERT INTO attribute(label,type,value,item_id,ordernumber) VALUES ('$label','$type','$value',$item_id,0)";
 		
