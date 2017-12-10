@@ -1,11 +1,11 @@
 <?php
 
-//Deletes a item
+//Deletes a list
 include_once('config.php');
 include_once('dbutils.php');
 
 $data = json_decode(file_get_contents('php://input'), true);
-$itemid = $data['id'];
+$id = $data['id'];
 
 //variable to keep track if the form is complete
 $isComplete = true;
@@ -16,13 +16,13 @@ $errorMessage = "";
 $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
 
 
-if(!isset($itemid)){
+if(!isset($id)){
 	$errorMessage .= "No ID was set.";
 	$isComplete = false;
 } else{
 	//check if ID is in table
 	
-	$query = "SELECT * FROM item WHERE id=$itemid";
+	$query = "SELECT * FROM list WHERE id=$id";
 	
 	//run the query
 	
@@ -37,7 +37,7 @@ if(!isset($itemid)){
 
 if($isComplete){
 	//lets delete the record
-	$query = "DELETE FROM item WHERE id=$itemid";
+	$query = "DELETE FROM list WHERE id=$id";
 	
 	//run the delete statement
 	$result =queryDB($query,$db);
