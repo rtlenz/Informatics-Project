@@ -16,24 +16,7 @@ $errorMessage = "";
 $db = connectDB($DBHost, $DBUser, $DBPassword, $DBName);
 
 
-if(!isset($id)){
-	$errorMessage .= "No ID was set.";
-	$isComplete = false;
-} else{
-	//check if ID is in table
-	
-	$query = "SELECT * FROM item WHERE id=$itemid";
-	
-	//run the query
-	
-	$result= queryDB($query,$db);
-	
-	if(nTuples($result) == 0){
-		$errorMessage .= "The id provided doesn't match any in the table";
-		$isComplete = false;
-	}
-	
-}
+
 
 if($isComplete){
 	//lets delete the record
