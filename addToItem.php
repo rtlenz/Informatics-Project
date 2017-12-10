@@ -19,13 +19,19 @@
 	
 	
 	
+	
 	if ($isComplete){
 		//everything works
 		
 		
-		 
+		
+	
 		session_start();
 		$listid = $_SESSION['listid'];
+		
+		
+		
+		
 		//make insert statement	
 		$query = "INSERT INTO item(name,list_id,ordernumber) VALUES ('$name',$listid,0)";
 		
@@ -33,15 +39,12 @@
 		$result = queryDB($query,$db);
 		
 		
-		//get id for players just entered Add this to a $session variable with the list id
+		//get id for item just entered add this to a $session variable with the list id
 		$_SESSION['item_id'] = mysqli_insert_id($db);
+		
+		
 		$item_id = $_SESSION['item_id'];
-		
-		
-		
-		
-		
-		
+	
 		
 		//send a response back to the called of this php file
 		$response =array();
