@@ -4,12 +4,5 @@ CREATE TABLE account(
 	id INT NOT NULL AUTO_INCREMENT,
 	hashedpass VARCHAR(255) NOT NULL,
 	username VARCHAR(255) NOT NULL,
-	firstName VARCHAR(255) NOT NULL,
-	lastName VARCHAR(255) NOT NULL,
-	email VARCHAR(255) NOT NULL,
-	birthday VARCHAR(255) NOT NULL,
-	friends VARCHAR(255) NOT NULL,
-	follow_followedid INT NOT NULL,
-	follow_followerid INT NOT NULL,
 	PRIMARY KEY (ID)
 );
