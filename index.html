@@ -59,20 +59,19 @@
                                 <li class="list-group-item"  ng-repeat="attribute in item.attributes">
                                         <div ng-if="attribute.type=='text'">
                                             <strong>{{attribute.label}}</strong>: {{attribute.value}}
-                                            
                                         </div>
-                                        <div ng-if="attribute.type=='video'">
-                                            <div class="col-sm-6 col-xs-12">
-                                                <div class="embed-responsive embed-responsive-16by9">
-                                                    <span ng-bind-html="attribute.value | trustHtml"></span>
-                                                </div>
+                                            <div ng-if="attribute.type=='video'">
+                                                
+                                                    <div class="embed-responsive embed-responsive-16by9">
+                                                        <span ng-bind-html="attribute.value | trustHtml"></span>
+                                                    </div>
                                             </div>
-                                        </div>
-                                        <div ng-if="attribute.type=='image'">
-                                            <img class="img-responsive">
-                                                <span ng-bind-html="attribute.value | trustHtml"></span>
-                                            </img>
-                                        </div>
+                                            <div ng-if="attribute.type=='image'">
+                                                <img class="img-responsive">
+                                                    <span ng-bind-html="attribute.value | trustHtml"></span>
+                                                </img>
+                                            </div>
+                                        
                                 </li>
                             </ul>
                             <p><button type="button" class="btn btn-danger btn-xs" ng-click="deleteItem(item.name, item.id)">
@@ -81,7 +80,7 @@
                     </li>
                 </ul>
                 
-                <p><button class="btn btn-default" ng-show="isloggedin"> <a href="edititem.html">Add New Item</a></button></p>
+                <p><button class="btn btn-default" ng-show="isloggedin"> <a href="addItemName.html">Add New Item</a></button></p>
                 <!--<button class="btn btn-default"><a href="addItemName.html">Add Another Item</a></button>-->
                <!-- <span class="glyphicon glyphicon-plus"></span>-->  
 
