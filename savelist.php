@@ -9,6 +9,7 @@
 	
 	$listName = $data['listName'];
 	$privacy = $data['privacy'];
+	$timeCreated = $data['timeCreated'];
 	
 	session_start();
 	$accountid = $_SESSION['accountid'];
@@ -56,7 +57,7 @@
 		 
 		
 		//make insert statement
-		$query = "INSERT INTO list(listName,accountid,privacy) VALUES ('$listName',$accountid,'$privacy')";
+		$query = "INSERT INTO list(listName,accountid,privacy,timeCreated) VALUES ('$listName',$accountid,'$privacy',NOT NULL)";
 		
 		
 		
