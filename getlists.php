@@ -18,7 +18,7 @@
 		
 		//set up query to get specific lists for each account
 		$accountid= $_SESSION['accountid'];
-		$query = "SELECT * FROM list WHERE accountid=$accountid AND privacy='public'";
+		$query = "SELECT * FROM list WHERE privacy='public' ORDER BY timeCreated DESC";
 		$result = queryDB($query, $db);
 		$lists = array();
 			
