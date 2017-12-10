@@ -55,9 +55,6 @@
                 <ul class="list-group">
                     <li class="list-group-item" class="panel-body" ng-repeat="item in list.items | filter:query">
                             <h4>{{item.name}}</h4>
-                            <p><button type="button" class="btn btn-danger btn-xs" ng-click="deleteItem(item.name, item.id)">
-                                <span class="glyphicon glyphicon-trash"></span>
-                            </button></p>
                             <ul class="list-group">
                                 <li class="list-group-item"  ng-repeat="attribute in item.attributes">
                                         <div ng-if="attribute.type=='text'">
@@ -65,11 +62,10 @@
                                             
                                         </div>
                                         <div ng-if="attribute.type=='video'">
-                                            <div class="col-sm-6 col-xs-12">
+                                            
                                                 <div class="embed-responsive embed-responsive-16by9">
                                                     <span ng-bind-html="attribute.value | trustHtml"></span>
                                                 </div>
-                                            </div>
                                         </div>
                                         <div ng-if="attribute.type=='image'">
                                             <img class="img-responsive">
@@ -78,12 +74,13 @@
                                         </div>
                                 </li>
                             </ul>
+                            <p><button type="button" class="btn btn-danger btn-xs" ng-click="deleteItem(item.name, item.id)">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </button></p>
                     </li>
                 </ul>
-                   <p><button class="btn btn-primary" ng-show="isloggedin" href="edititem.html">
-                <span class="glyphicon glyphicon-plus"></span>
-                Add New Item
-                </button></p>
+                   <p><button class="btn btn-default" ng-show="isloggedin"> <a href="addItemName.html">Add New Item</a></button></p>
+                   <strong>Vote Count: {{list.voteCount}}</strong>
             </div>
                 <div class="btn-group" role="group" aria-label="...">
                     <p><button type="button" class="btn btn-danger" ng-click="deleteList(list.listName, list.id)">Delete List</button></p>
