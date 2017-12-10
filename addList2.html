@@ -41,11 +41,6 @@
         
                 <form name="listForm" novalidate>      
                  
-                        <!--<div class="form-group" ng-class="{ 'has-error' : listForm.name.$invalid && listForm.name.$touched, 'has-success' : !listForm.name.$invalid && listForm.name.$touched }">
-                            <label>Item Name</label>
-                            <input type="text" class="form-control" name="name" ng-model="item.name" required/>
-                            <p ng-show="listForm.name.$invalid && listForm.name.$touched" class="help-block">An item name is required</p>
-                        </div>-->
                 
                         <div class="form-group" ng-class="{ 'has-error' : listForm.label.$invalid && listForm.label.$touched, 'has-success' : !listForm.label.$invalid && listForm.label.$touched }">
                             <label>Attribute Label</label>
@@ -59,41 +54,26 @@
                             <p ng-show="listForm.value.$invalid && listForm.value.$touched" class="help-block">A value is required</p>
                         </div>
                         
-                        <div>
+                        <div class="form-group" ng-class="{ 'has-error' : listForm.type.$invalid && listForm.type.$touched, 'has-success' : !listForm.type.$invalid && listForm.type.$touched }">
                                 <label>Attribute Type </label>
-                                <select ng-model="attribute.type">
+                                <select type="text" class="form-control" name="type" ng-model="attribute.type" required/>
                                 <option value="text">Text</option>
                                 <option value="video">Video</option>
-                                <option value="image">Image</option>
                                 <option value="date">Date</option>
+                                <p ng-show="listForm.type.$invalid && listForm.type.$touched" class="help-block">A type is required</p>
                                 </select>
                         </div>
                         
-                        <!--<button class="btn btn-default" ng-click="addToList(item)" ng-disabled="listForm.$invalid">Add Item Name to List</button>-->
+                       
                         <button class="btn btn-default" ng-click="addToAttribute(attribute)" ng-disabled="listForm.$invalid">Add Attributes to Item</button>
-                        <button class="btn btn-default"><a href="addItemName.html">Add Another Item</a></button>
-                       <button class="btn btn-default"> <a href="index.html">Finished with Item</a></button>
+                        <a class="btn btn-default" href="addItemName.html" role="button" ng-disabled="listForm.$invalid">Add Another Item</a>
+                        <a class="btn btn-default" href="index.html" role="button" >Finished Adding Items</a>
                         
                 </form>
         </div>
 
 
 
-<!--div for review what you already have-->
-
-<!--<div class="panel panel-default">-->
-<!--        <div class="panel-heading">-->
-<!--        -->
-<!--                <h2>{{list.listName}}</h2>-->
-<!--                <div ng-repeat="attribute in item.attributes">-->
-<!--                        <h4>{{item.name}}</h4>-->
-<!--                        {{attribute.label}}-->
-<!--                        {{attribute.value}}-->
-<!--                </div>        -->
-<!--        -->
-<!--        </div>-->
-<!--</div>-->
-<!--        -->
         
         
         
