@@ -18,7 +18,7 @@
 		
 		//set up query to get specific lists for each account
 		$accountid= $_SESSION['accountid'];
-		$query = "SELECT * FROM list WHERE accountid=$accountid AND privacy='private'";
+		$query = "SELECT * FROM list WHERE accountid=$accountid";
 		$result = queryDB($query, $db);
 		$lists = array();
 			
