@@ -5,7 +5,7 @@ include_once('config.php');
 include_once('dbutils.php');
 
 $data = json_decode(file_get_contents('php://input'), true);
-$id = $data['id'];
+$itemid = $data['id'];
 
 //variable to keep track if the form is complete
 $isComplete = true;
@@ -22,7 +22,7 @@ if(!isset($id)){
 } else{
 	//check if ID is in table
 	
-	$query = "SELECT * FROM list WHERE id=$id";
+	$query = "SELECT * FROM item WHERE id=$itemid";
 	
 	//run the query
 	
@@ -37,7 +37,7 @@ if(!isset($id)){
 
 if($isComplete){
 	//lets delete the record
-	$query = "DELETE FROM list WHERE id=$id";
+	$query = "DELETE FROM item WHERE id=$itemid";
 	
 	//run the delete statement
 	$result =queryDB($query,$db);
